@@ -1,0 +1,24 @@
+- name: Copy application file to /opt
+  copy:
+      src: "ntag_writer"
+      dest: "/opt"
+
+- name: Create Docker image for NTAG Writer
+  docker_image:
+      build:
+          path: /opt/ntag_writer
+          pull: true
+      name: ntag_writer
+      tag: latest
+      source: build
+
+- name: Launch Docker container with NTAG Writer
+  docker_container:
+      name: ntag_writer
+      image: ntag_writer
+      state: started
+      restart_policy: always
+      devices:
+          - "/dev/i2c-1:/dev/i2c-1"
+      published_ports:
+          - "5000:5000"

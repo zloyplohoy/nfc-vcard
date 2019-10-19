@@ -23,3 +23,10 @@
           - containerd.io
       install_recommends: false
 
+- name: Install backports package to fix Docker Python module issue
+  apt:
+      name: python-backports.ssl-match-hostname
+
+- name: Install Docker Python module
+  pip:
+      name: docker
