@@ -1,0 +1,7 @@
+- name: Enable I2C interface
+  replace:
+      path: "/boot/config.txt"
+      regexp: "^#dtparam=i2c_arm=on$"
+      replace: "dtparam=i2c_arm=on"
+  notify:
+      - "Restart required"

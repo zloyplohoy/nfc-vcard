@@ -4,3 +4,4 @@
   roles:
       - upgrade
       - docker-ce
+      - i2c
