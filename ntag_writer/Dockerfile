@@ -1,10 +1,8 @@
-FROM python:3.7 AS build-env
-
-#RUN apk --update add gcc musl-dev
+FROM python:3.8
 
 ADD app /app
 
-RUN pip3 install -r /app/requirements.txt
+RUN pip install -r /app/requirements.txt
 
 WORKDIR /app
 
