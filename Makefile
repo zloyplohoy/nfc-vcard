@@ -12,3 +12,7 @@ requirements:
 ansible:
 	. venv/bin/activate && \
 	ansible-playbook -i inventory.txt playbook.yml
+
+start:
+	. venv/bin/activate && \
+	ansible-playbook -i inventory.txt playbook.yml -t start
