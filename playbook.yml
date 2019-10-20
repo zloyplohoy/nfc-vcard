@@ -4,13 +4,10 @@
   become: true
   roles:
     - role: upgrade
-      tags:
-        - install
     - role: docker-ce
-      tags:
-        - install
     - role: i2c
-      tags:
-        - install
     - role: ntag_writer
+      tags:
+        - start
+        - always
 ...

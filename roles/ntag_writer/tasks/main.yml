@@ -3,8 +3,6 @@
   copy:
     src: "ntag_writer"
     dest: "/opt"
-  tags:
-    - install
 
 - name: Create Docker image for NTAG Writer
   docker_image:
@@ -14,8 +12,6 @@
     name: ntag_writer
     tag: latest
     source: build
-  tags:
-    - install
 
 - name: Launch Docker container with NTAG Writer
   docker_container:
@@ -29,4 +25,5 @@
       - "5000:5000"
   tags:
     - start
+    - never
 ...
