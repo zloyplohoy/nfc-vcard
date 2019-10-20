@@ -1,4 +1,6 @@
+---
 - name: Perform system upgrade
   apt:
-      upgrade: full
-      update_cache: true
+    upgrade: full
+    update_cache: true
+...

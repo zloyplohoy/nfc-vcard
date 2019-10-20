@@ -1,12 +1,18 @@
 install: venv requirements ansible
 
 venv:
-	python3 -m venv venv
+	python3 -m venv venv && \
+	. venv/bin/activate && \
+	pip install wheel
 
 requirements:
-	. ./venv/bin/activate && \
-	pip3 install -r requirements.txt
+	. venv/bin/activate && \
+	pip install -r requirements.txt
 
 ansible:
-	. ./venv/bin/activate && \
+	. venv/bin/activate && \
 	ansible-playbook -i inventory.txt playbook.yml
+
+start:
+	. venv/bin/activate && \
+	ansible-playbook -i inventory.txt playbook.yml -t start

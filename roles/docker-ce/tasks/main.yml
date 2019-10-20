@@ -1,25 +1,35 @@
+---
 - name: Install supplementary packages
   apt:
-      name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg2
-          - software-properties-common
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
 
 - name: Obtain Docker repository key
   apt_key:
-      url: "https://download.docker.com/linux/debian/gpg"
+    url: "https://download.docker.com/linux/debian/gpg"
 
 - name: Add Docker repository definition
   apt_repository:
-      repo: "deb [atch=armhf] https://download.docker.com/linux/raspbian {{ ansible_distribution_release }} stable"
+    repo: "deb [arch=armhf] https://download.docker.com/linux/raspbian \
+           {{ ansible_distribution_release }} stable"
 
 - name: Install Docker packages
   apt:
-      name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-      install_recommends: false
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    install_recommends: false
 
+- name: Install backports package to fix Docker Python module issue
+  apt:
+    name: python-backports.ssl-match-hostname
+
+- name: Install Docker Python module
+  pip:
+    name: docker
+...
