@@ -1,4 +1,4 @@
-adafruit-circuitpython-pn532
-Flask-RESTful
-ndeflib
-vobject
+adafruit-circuitpython-pn532==2.0.8
+Flask-RESTful==0.3.7
+ndeflib==0.3.3
+vobject==0.9.6.1
