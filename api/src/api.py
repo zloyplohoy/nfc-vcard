@@ -108,4 +108,4 @@ class Vcard(Resource):
 
 api.add_resource(Vcard, '/v1/vcard')
 
-app.run(host='0.0.0.0', port=5000, debug=True)
+app.run(host='0.0.0.0', port=5000)
