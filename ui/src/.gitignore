@@ -1,0 +1,11 @@
+.idea/
+dist/
+node_modules/
+npm-debug.log
+.cache/*
+!.cache/.gitkeep
+.cache
+.DS_Store
+package-lock.json
+yarn.lock
+.vscode/
