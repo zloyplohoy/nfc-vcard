@@ -106,6 +106,6 @@ class Vcard(Resource):
         return 'Formatted', 200
 
 
-api.add_resource(Vcard, '/vcard')
+api.add_resource(Vcard, '/v1/vcard')
 
 app.run(host='0.0.0.0', port=5000, debug=True)
