@@ -1,9 +1,8 @@
 FROM python:3.8
+WORKDIR /usr/src/app
 
-ADD app /app
+COPY src/* .
 
 RUN pip install -r /app/requirements.txt
 
-WORKDIR /app
-
-CMD ["python3", "app.py"]
+CMD ["python3", "api.py"]

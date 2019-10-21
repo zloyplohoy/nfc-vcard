@@ -77,7 +77,7 @@ class Vcard(Resource):
         if args['position']:
             vcard.add('title')
             vcard.title.value = args['position']
-        
+
         vcard_newlines = '\n'.join(vcard.serialize().splitlines())
 
         if args['policy']:
