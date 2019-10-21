@@ -1,0 +1,31 @@
+---
+- name: Copy API files to /opt
+  copy:
+    src: api/
+    dest: /opt/nfc-vcard-api/
+
+- name: Create Docker image for API
+  docker_image:
+    build:
+      path: /opt/nfc-vcard-api/
+      pull: true
+    name: nfc-vcard-api
+    tag: latest
+    source: build
+  tags:
+    - build
+
+- name: Launch Docker container with API
+  docker_container:
+    name: nfc-vcard-api
+    image: nfc-vcard-api:latest
+    state: started
+    restart_policy: always
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    published_ports:
+      - "5000:5000"
+  tags:
+    - start
+    - never
+...

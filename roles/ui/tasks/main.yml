@@ -1,0 +1,29 @@
+---
+- name: Copy UI files to /opt
+  copy:
+    src: ui/
+    dest: /opt/nfc-vcard-ui/
+
+- name: Create Docker image for UI
+  docker_image:
+    build:
+      path: /opt/nfc-vcard-ui/
+      pull: true
+    name: nfc-vcard-ui
+    tag: latest
+    source: build
+  tags:
+    - build
+
+- name: Launch Docker container with UI
+  docker_container:
+    name: nfc-vcard-ui
+    image: nfc-vcard-ui:latest
+    state: started
+    restart_policy: always
+    published_ports:
+      - "80:80"
+  tags:
+    - start
+    - never
+...

@@ -6,5 +6,6 @@
     - upgrade
     - docker-ce
     - i2c
-    - ntag_writer
+    - api
+    - ui
 ...
