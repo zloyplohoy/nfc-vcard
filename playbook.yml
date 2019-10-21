@@ -3,11 +3,8 @@
   connection: local
   become: true
   roles:
-    - role: upgrade
-    - role: docker-ce
-    - role: i2c
-    - role: ntag_writer
-      tags:
-        - start
-        - always
+    - upgrade
+    - docker-ce
+    - i2c
+    - ntag_writer
 ...
