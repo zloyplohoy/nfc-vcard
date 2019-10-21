@@ -1,10 +1,10 @@
 ---
-- name: Copy application file to /opt
+- name: Copy UI files to /opt
   copy:
     src: ui/
     dest: /opt/nfc-vcard-ui/
 
-- name: Create Docker image for NTAG Writer
+- name: Create Docker image for UI
   docker_image:
     build:
       path: /opt/nfc-vcard-ui/
@@ -15,7 +15,7 @@
   tags:
     - build
 
-- name: Launch Docker container with NTAG Writer
+- name: Launch Docker container with UI
   docker_container:
     name: nfc-vcard-ui
     image: nfc-vcard-ui:latest
