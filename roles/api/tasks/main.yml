@@ -1,13 +1,13 @@
 ---
 - name: Copy application file to /opt
   copy:
-    src: api
-    dest: /opt/nfc-vcard-api
+    src: api/
+    dest: /opt/nfc-vcard-api/
 
 - name: Create Docker image for NTAG Writer
   docker_image:
     build:
-      path: /opt/nfc-vcard-api
+      path: /opt/nfc-vcard-api/
       pull: true
     name: nfc-vcard-api
     tag: latest
