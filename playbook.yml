@@ -7,4 +7,5 @@
     - docker-ce
     - i2c
     - api
+    - ui
 ...
