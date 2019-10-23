@@ -21,8 +21,7 @@
     image: nfc-vcard-ui:latest
     state: started
     restart_policy: always
-    published_ports:
-      - "80:80"
+    network_mode: host
   tags:
     - start
     - never
