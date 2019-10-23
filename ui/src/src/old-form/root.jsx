@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import FormContainer from './containers/FormContainer';
-import logo from './logo.png';
+import logo from '../logo.png';
+import './bootstrap.min.css';
+import './index.css';
 
 export class Root extends Component {
     render() {
