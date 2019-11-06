@@ -7,16 +7,12 @@ import axios from 'axios';
 import grey from '@material-ui/core/colors/grey';
 import teal from '@material-ui/core/colors/teal';
 import {
-    Button,
-    ButtonGroup,
-    CircularProgress,
-    Container,
-    Grid,
-    makeStyles,
-    Paper
+    Button, ButtonGroup, CircularProgress, Container, Grid, Link, makeStyles, Paper
 } from '@material-ui/core';
+import {
+    CustomCheckbox, CustomSnackbar, CustomTextField, CustomSelect
+} from './components';
 import validate from './validate';
-import {CustomCheckbox, CustomSnackbar, CustomTextField} from './components';
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -106,8 +102,11 @@ const FormContainer = (props) => {
 
     const post = () => (
         axios.post(
-            '/api/v1/vcard',
-            values
+            '/api/v1/vcard', {
+                ...values,
+                phone_personal: Boolean(values.phone_personal),
+                email_personal: Boolean(values.email_personal)
+            }
         )
             .then(() => {
                 setOpen({
@@ -125,6 +124,18 @@ const FormContainer = (props) => {
             })
     );
 
+    const Label = (
+        <>
+            Ознакомлен с условиями
+            <Link
+                component="a"
+                href="/custom/privacy_policy.pdf"
+                download="Политика конфиденциальности"
+            > пользовательского соглашения
+            </Link>
+        </>
+    );
+
     return (
         <Container
             maxWidth="sm"
@@ -139,26 +150,24 @@ const FormContainer = (props) => {
                         <Grid item xs={12}>
                             <Field name="last_name" component={CustomTextField} label="Фамилия" />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={8}>
                             <Field name="phone_number" component={CustomTextField} label="Номер телефона" />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={4}>
                             <Field
-                                component={CustomCheckbox}
-                                className={classes.checkbox}
+                                component={CustomSelect}
                                 name="phone_personal"
-                                label="Номер телефона личный"
+                                items={[{value: 1, title: 'Личный'}, {value: 0, title: 'Рабочий'}]}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={8}>
                             <Field name="email_address" component={CustomTextField} label="Email" />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={4}>
                             <Field
                                 name="email_personal"
-                                component={CustomCheckbox}
-                                className={classes.checkbox}
-                                label="Email личный"
+                                component={CustomSelect}
+                                items={[{value: 1, title: 'Личный'}, {value: 0, title: 'Рабочий'}]}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -172,7 +181,7 @@ const FormContainer = (props) => {
                                 component={CustomCheckbox}
                                 className={classes.checkbox}
                                 name="policy"
-                                label="Ознакомлен с условиями"
+                                label={Label}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -185,7 +194,7 @@ const FormContainer = (props) => {
                                     color="primary"
                                     disabled={submitting || invalid}
                                 >
-                                    Отправить
+                                    Записать
                                 </Button>
                                 <Button
                                     color="secondary"
@@ -219,7 +228,12 @@ const FormContainer = (props) => {
 
 export default reduxForm({
     form: 'RegistrationForm',
-    validate
+    validate,
+    initialValues: {
+        phone_number: '+7',
+        phone_personal: 1,
+        email_personal: 1
+    }
 })(connect(state => ({
     values: getFormValues('RegistrationForm')(state)
 }), {

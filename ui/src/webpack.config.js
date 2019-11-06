@@ -47,9 +47,8 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'registration-form',
+            title: 'Создать NFC визитку',
             hash: true,
-            favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
             template: path.resolve(__dirname, 'public', 'index.html')
         })
     ],
