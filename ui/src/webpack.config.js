@@ -58,7 +58,10 @@ const config = {
         historyApiFallback: true,
         hot: true,
         port: 80,
-        open: true
+        open: true,
+        proxy: {
+            '/api/v1/vcard': 'http://localhost:3000'
+        }
     }
 };
 

@@ -1,22 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    Field, reduxForm, getFormValues, startSubmit, stopSubmit
+    Field, getFormValues, reduxForm, startSubmit, stopSubmit
 } from 'redux-form';
 import axios from 'axios';
 import grey from '@material-ui/core/colors/grey';
 import teal from '@material-ui/core/colors/teal';
 import {
-    Grid,
-    Paper,
-    Container,
     Button,
     ButtonGroup,
     CircularProgress,
-    makeStyles
+    Container,
+    Grid,
+    makeStyles,
+    Paper
 } from '@material-ui/core';
 import validate from './validate';
-import {CustomTextField, CustomCheckbox, CustomSnackbar} from './components';
+import {CustomCheckbox, CustomSnackbar, CustomTextField} from './components';
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -67,40 +67,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const FormContainer = (props) => {
-    const [state, setState] = React.useState({
-        open: null
-    });
-
-    const {open} = state;
-
     const {
-        reset, submitting, invalid, pristine, values, handleSubmit, startSubmitting, stopSubmitting
+        reset, submitting, invalid, pristine, values, handleSubmit, stopSubmitting, startSubmitting
     } = props;
 
     const classes = useStyles(submitting);
 
+    const [open, setOpen] = React.useState(null);
+    const [connected, setConnected] = React.useState(false);
+
     const handleClose = () => {
-        setState({open: null});
+        setOpen(null);
     };
 
     const handleCheck = () => {
         startSubmitting();
         axios('/api/v1/vcard')
             .then(() => {
-                setState({
-                    open: {
-                        variant: 'success',
-                        message: 'Карта доступна'
-                    }
+                setOpen({
+                    variant: 'success',
+                    message: 'Карта доступна'
                 });
+                setConnected(true);
                 stopSubmitting();
             })
             .catch((error) => {
-                setState({
-                    open: {
-                        variant: 'error',
-                        message: 'Ошибка! Карта не доступна'
-                    }
+                if (connected) { // если карта была доступна, но пропал
+                    setConnected(false);
+                }
+                setOpen({
+                    variant: 'error',
+                    message: 'Карта не доступна'
                 });
                 console.log(error);
                 stopSubmitting();
@@ -113,20 +110,16 @@ const FormContainer = (props) => {
             values
         )
             .then(() => {
-                setState({
-                    open: {
-                        variant: 'success',
-                        message: 'Запись прошла успешно'
-                    }
+                setOpen({
+                    variant: 'success',
+                    message: 'Запись прошла успешно'
                 });
                 reset();
             })
             .catch((error) => {
-                setState({
-                    open: {
-                        variant: 'error',
-                        message: 'Запись не удалась'
-                    }
+                setOpen({
+                    variant: 'error',
+                    message: 'Запись не удалась'
                 });
                 console.log(error);
             })
