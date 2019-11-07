@@ -8,6 +8,7 @@ export const CustomTextField = ({input, label, meta: {touched, error}}) => (
             error={Boolean(touched && error)}
             fullWidth
             variant="outlined"
+            autoComplete="off"
             {...input}
         />
         {touched && error && <FormHelperText error>{error}</FormHelperText>}

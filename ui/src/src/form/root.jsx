@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import {Provider} from 'react-redux';
-import {Typography} from '@material-ui/core';
+import {CssBaseline} from '@material-ui/core';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {grey, red} from '@material-ui/core/colors';
+import {red} from '@material-ui/core/colors';
 import store from './store';
 import FormContainer from './formContainer';
 import './styles.css';
@@ -18,9 +18,7 @@ export class Root extends PureComponent {
         return (
             <Provider store={store}>
                 <MuiThemeProvider theme={theme}>
-                    <Typography variant="h3" align="center" style={{color: grey[50], marginTop: '30px'}}>
-                        Создать NFC визитку
-                    </Typography>
+                    <CssBaseline />
                     <FormContainer />
                 </MuiThemeProvider>
             </Provider>

@@ -6,7 +6,7 @@ import {
 import axios from 'axios';
 import {green, grey} from '@material-ui/core/colors';
 import {
-    Button, ButtonGroup, CircularProgress, Container, Grid, Link, makeStyles, Paper
+    Button, ButtonGroup, CircularProgress, Container, Grid, Link, makeStyles, Paper, Typography
 } from '@material-ui/core';
 import {
     CustomCheckbox, CustomSnackbar, CustomTextField, CustomSelect
@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
             backgroundColor: '#0e1621'
+        },
+        'body, html, #root': {
+            height: '100%'
         }
     },
     paper: submitting => ({
@@ -39,6 +42,11 @@ const useStyles = makeStyles(theme => ({
         }
     }),
     container: {
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'center',
         maxWidth: '630px',
         position: 'relative'
     },
@@ -166,6 +174,9 @@ const FormContainer = (props) => {
             maxWidth="sm"
             className={classes.container}
         >
+            <Typography variant="h3" align="center" style={{color: grey[50]}}>
+                Создать NFC визитку
+            </Typography>
             <Paper className={classes.paper}>
                 <form onSubmit={handleSubmit(post)} className={classes.form}>
                     <Grid container spacing={3}>
@@ -206,6 +217,7 @@ const FormContainer = (props) => {
                                 component={CustomCheckbox}
                                 className={classes.checkbox}
                                 name="policy"
+                                type="checkbox"
                                 label={Label}
                             />
                         </Grid>
