@@ -1,5 +1,0 @@
----
-- name: Restart required
-  debug:
-    msg: Restart is required to enable I2C bus
-...
