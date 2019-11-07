@@ -26,5 +26,9 @@ export default function (values) {
         errors.phone_number = 'Неверный номер телефона';
     }
 
+    if (!values.policy) {
+        errors.policy = 'Подтвердите обработку персональных данных';
+    }
+
     return errors;
 }
