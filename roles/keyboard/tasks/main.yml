@@ -1,10 +1,16 @@
 ---
 - name: Set keyboard layouts
-  shell: "setxkbmap us,ru"
+  shell: "setxkbmap -option grp:alt_shift_toggle us,ru"
 
 - name: Make keyboard layouts persistent across restarts
   lineinfile:
     path: "/etc/default/keyboard"
     regexp: '^XKBLAYOUT=.*'
     line: 'XKBLAYOUT="us,ru"'
+
+- name: Make keyboard layout switch combination persistent across restarts
+  lineinfile:
+    path: "/etc/default/keyboard"
+    regexp: '^XKBOPTIONS=.*'
+    line: 'XKBOPTIONS="grp:alt_shift_toggle"'
 ...
