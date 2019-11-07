@@ -4,6 +4,17 @@
     src: ui/
     dest: /opt/nfc-vcard-ui/
 
+- name: Change permissions for custom directory
+  file:
+    path: "/opt/nfc-vcard-ui/custom"
+    mode: "o+w"
+
+- name: Link custom directory to desktop
+  file:
+    src: "/opt/nfc-vcard-ui/custom"
+    dest: "/home/pi/Desktop/custom"
+    state: link
+
 - name: Create Docker image for UI
   docker_image:
     build:
@@ -31,8 +42,8 @@
 - name: Notify user of custom elements
   debug:
     msg:
-      - "Please copy your privacy policy to /opt/nfc-vcard-ui/custom/privacy_policy.pdf"
-      - "Please copy your favicon to /opt/nfc-vcard-ui/custom/favicon.ico"
+      - "Please copy your privacy policy to Desktop/custom/privacy_policy.pdf"
+      - "Please copy your favicon to Desktop/custom/favicon.ico"
   tags:
     - start
     - never
