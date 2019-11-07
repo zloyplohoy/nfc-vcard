@@ -3,8 +3,8 @@
   connection: local
   become: true
   roles:
-    - docker-ce
     - i2c
+    - docker-ce
     - api
     - ui
 ...
