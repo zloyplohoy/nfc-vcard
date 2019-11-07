@@ -4,9 +4,7 @@ export default function (values) {
         'first_name',
         'last_name',
         'phone_number',
-        'email_address',
-        'organization',
-        'position'
+        'email_address'
     ];
     requiredFields.forEach(field => {
         if (!values[field]) {
