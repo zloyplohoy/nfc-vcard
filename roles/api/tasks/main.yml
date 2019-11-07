@@ -17,6 +17,14 @@
     dest: "/home/pi/Desktop/vcards"
     state: link
 
+- name: Stop Docker container before deleting image
+  docker_container:
+    name: nfc-vcard-api
+    state: absent
+  tags:
+    - build
+    - never
+
 - name: Remove Docker image on rebuild
   docker_image:
     name: nfc-vcard-api
