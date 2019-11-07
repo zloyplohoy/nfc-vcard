@@ -17,9 +17,6 @@ const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
             backgroundColor: '#0e1621'
-        },
-        'body, html, #root': {
-            height: '100%'
         }
     },
     paper: submitting => ({
@@ -42,13 +39,11 @@ const useStyles = makeStyles(theme => ({
         }
     }),
     container: {
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        justifyContent: 'center',
         maxWidth: '630px',
-        position: 'relative'
+        position: 'absolute',
+        left: '50%',
+        top: '10%',
+        transform: 'translateX(-50%)'
     },
     form: {
         width: '100%' // Fix IE 11 issue.
@@ -170,112 +165,114 @@ const FormContainer = (props) => {
     );
 
     return (
-        <Container
-            maxWidth="sm"
-            className={classes.container}
-        >
-            <Typography variant="h3" align="center" style={{color: grey[50]}}>
-                Создать NFC визитку
-            </Typography>
-            <Paper className={classes.paper}>
-                <form onSubmit={handleSubmit(post)} className={classes.form}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <Field name="first_name" component={CustomTextField} label="Имя" />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Field name="last_name" component={CustomTextField} label="Фамилия" />
-                        </Grid>
-                        <Grid item xs={12} sm={8}>
-                            <Field name="phone_number" component={CustomTextField} label="Номер телефона" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Field
-                                component={CustomSelect}
-                                name="phone_personal"
-                                items={[{value: 1, title: 'Личный'}, {value: 0, title: 'Рабочий'}]}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={8}>
-                            <Field name="email_address" component={CustomTextField} label="Email" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Field
-                                name="email_personal"
-                                component={CustomSelect}
-                                items={[{value: 1, title: 'Личный'}, {value: 0, title: 'Рабочий'}]}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Field name="organization" component={CustomTextField} label="Организация" />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Field name="position" component={CustomTextField} label="Должность" />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Field
-                                component={CustomCheckbox}
-                                className={classes.checkbox}
-                                name="policy"
-                                type="checkbox"
-                                label={Label}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <ButtonGroup
-                                fullWidth
-                                aria-label="full width outlined button group"
-                            >
-                                <Button
-                                    type="submit"
-                                    className={classes.submitButton}
-                                    disabled={submitting || invalid}
+        <>
+            <Container
+                maxWidth="sm"
+                className={classes.container}
+            >
+                <Typography variant="h3" align="center" style={{color: grey[50]}}>
+                    Создать NFC визитку
+                </Typography>
+                <Paper className={classes.paper}>
+                    <form onSubmit={handleSubmit(post)} className={classes.form}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Field name="first_name" component={CustomTextField} label="Имя" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Field name="last_name" component={CustomTextField} label="Фамилия" />
+                            </Grid>
+                            <Grid item xs={12} sm={8}>
+                                <Field name="phone_number" component={CustomTextField} label="Номер телефона" />
+                            </Grid>
+                            <Grid item xs={12} sm={4}>
+                                <Field
+                                    component={CustomSelect}
+                                    name="phone_personal"
+                                    items={[{value: 1, title: 'Личный'}, {value: 0, title: 'Рабочий'}]}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={8}>
+                                <Field name="email_address" component={CustomTextField} label="Email" />
+                            </Grid>
+                            <Grid item xs={12} sm={4}>
+                                <Field
+                                    name="email_personal"
+                                    component={CustomSelect}
+                                    items={[{value: 1, title: 'Личный'}, {value: 0, title: 'Рабочий'}]}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Field name="organization" component={CustomTextField} label="Организация" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Field name="position" component={CustomTextField} label="Должность" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Field
+                                    component={CustomCheckbox}
+                                    className={classes.checkbox}
+                                    name="policy"
+                                    type="checkbox"
+                                    label={Label}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ButtonGroup
+                                    fullWidth
+                                    aria-label="full width outlined button group"
                                 >
-                                    Записать
-                                </Button>
-                                <Button
-                                    onClick={handleCheck}
-                                    className={classes.submitButton}
-                                    disabled={submitting}
+                                    <Button
+                                        type="submit"
+                                        className={classes.submitButton}
+                                        disabled={submitting || invalid}
+                                    >
+                                        Записать
+                                    </Button>
+                                    <Button
+                                        onClick={handleCheck}
+                                        className={classes.submitButton}
+                                        disabled={submitting}
+                                    >
+                                        Проверить
+                                    </Button>
+                                </ButtonGroup>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ButtonGroup
+                                    fullWidth
+                                    aria-label="full width outlined button group"
                                 >
-                                    Проверить
-                                </Button>
-                            </ButtonGroup>
+                                    <Button
+                                        color="secondary"
+                                        type="button"
+                                        disabled={pristine || submitting}
+                                        onClick={reset}
+                                    >
+                                        Очистить форму
+                                    </Button>
+                                    <Button
+                                        color="secondary"
+                                        type="button"
+                                        disabled={submitting}
+                                        onClick={handleDelete}
+                                    >
+                                        Стереть карту
+                                    </Button>
+                                </ButtonGroup>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <ButtonGroup
-                                fullWidth
-                                aria-label="full width outlined button group"
-                            >
-                                <Button
-                                    color="secondary"
-                                    type="button"
-                                    disabled={pristine || submitting}
-                                    onClick={reset}
-                                >
-                                    Очистить форму
-                                </Button>
-                                <Button
-                                    color="secondary"
-                                    type="button"
-                                    disabled={submitting}
-                                    onClick={handleDelete}
-                                >
-                                    Стереть карту
-                                </Button>
-                            </ButtonGroup>
-                        </Grid>
-                    </Grid>
-                </form>
-            </Paper>
-            {submitting && <div className={classes.loader}><CircularProgress /></div>}
+                    </form>
+                </Paper>
+                {submitting && <div className={classes.loader}><CircularProgress /></div>}
+            </Container>
             {open && (
                 <CustomSnackbar
                     {...open}
                     onClose={handleClose}
                 />
             )}
-        </Container>
+        </>
     );
 };
 
