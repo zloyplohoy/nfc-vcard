@@ -3,6 +3,8 @@
   copy:
     src: ui/
     dest: /opt/nfc-vcard-ui/
+  tags:
+    - build
 
 - name: Change permissions for custom directory
   file:
@@ -14,6 +16,14 @@
     src: "/opt/nfc-vcard-ui/custom"
     dest: "/home/pi/Desktop/custom"
     state: link
+
+- name: Remove Docker image on rebuild
+  docker_image:
+    name: nfc-vcard-ui
+    state: absent
+  tags:
+    - build
+    - never
 
 - name: Create Docker image for UI
   docker_image:
