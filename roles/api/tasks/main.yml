@@ -4,6 +4,17 @@
     src: api/
     dest: /opt/nfc-vcard-api/
 
+- name: Change permissions for custom directory
+  file:
+    path: "/opt/nfc-vcard-api/vcards"
+    mode: "o+w"
+
+- name: Link custom directory to desktop
+  file:
+    src: "/opt/nfc-vcard-api/vcards"
+    dest: "/home/pi/Desktop/vcards"
+    state: link
+
 - name: Create Docker image for API
   docker_image:
     build:
