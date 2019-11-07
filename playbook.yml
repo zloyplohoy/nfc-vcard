@@ -3,6 +3,7 @@
   connection: local
   become: true
   roles:
+    - keyboard
     - i2c
     - docker-ce
     - api
