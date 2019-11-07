@@ -1,9 +1,18 @@
 ---
 - name: Enable I2C interface
-  replace:
+  lineinfile:
     path: "/boot/config.txt"
-    regexp: "^#dtparam=i2c_arm=on$"
-    replace: "dtparam=i2c_arm=on"
-  notify:
-    - "Restart required"
+    line: "dtparam=i2c_arm=on"
+    insertafter: "^#dtparam=i2c_arm=on$"
+
+- name: Check I2C interface presence
+  stat:
+    path: "/dev/i2c-1"
+  register: i2c_device_stat_result
+
+- name: Request restart
+  debug:
+    msg: "System restart is required to enable I2C."
+  when: i2c_device_stat_result.stat.exists == False
+  failed_when: true
 ...
