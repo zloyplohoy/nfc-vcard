@@ -2,14 +2,13 @@ import React, {PureComponent} from 'react';
 import {Provider} from 'react-redux';
 import {Typography} from '@material-ui/core';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {green, red, grey} from '@material-ui/core/colors';
+import {grey, red} from '@material-ui/core/colors';
 import store from './store';
 import FormContainer from './formContainer';
 import './styles.css';
 
 const theme = createMuiTheme({
     palette: {
-        primary: green,
         secondary: red
     }
 });

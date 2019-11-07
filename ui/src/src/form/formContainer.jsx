@@ -4,8 +4,7 @@ import {
     Field, getFormValues, reduxForm, startSubmit, stopSubmit
 } from 'redux-form';
 import axios from 'axios';
-import grey from '@material-ui/core/colors/grey';
-import teal from '@material-ui/core/colors/teal';
+import {green, grey} from '@material-ui/core/colors';
 import {
     Button, ButtonGroup, CircularProgress, Container, Grid, Link, makeStyles, Paper
 } from '@material-ui/core';
@@ -17,10 +16,7 @@ import validate from './validate';
 const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
-            backgroundColor: grey[800]
-        },
-        palette: {
-            secondary: teal[700]
+            backgroundColor: '#0e1621'
         }
     },
     paper: submitting => ({
@@ -59,6 +55,14 @@ const useStyles = makeStyles(theme => ({
         top: '50%',
         transform: 'translate(-50%, -50%)',
         zIndex: 2
+    },
+    submitButton: {
+        color: green[600],
+        border: '1px solid rgba(76, 175, 80, 0.5)',
+        '&:hover': {
+            border: '1px solid #4caf50',
+            backgroundColor: 'rgba(76, 175, 80, 0.08)'
+        }
     }
 }));
 
@@ -100,6 +104,26 @@ const FormContainer = (props) => {
             });
     };
 
+    const handleDelete = () => {
+        startSubmitting();
+        axios.delete('/api/v1/vcard')
+            .then(() => {
+                setOpen({
+                    variant: 'success',
+                    message: 'Содержимое карты удалено'
+                });
+                stopSubmitting();
+            })
+            .catch((error) => {
+                setOpen({
+                    variant: 'error',
+                    message: 'Карта не доступна'
+                });
+                console.log(error);
+                stopSubmitting();
+            });
+    };
+
     const post = () => (
         axios.post(
             '/api/v1/vcard', {
@@ -126,12 +150,13 @@ const FormContainer = (props) => {
 
     const Label = (
         <>
-            Ознакомлен с условиями
+            Ознакомлен с условиями&nbsp;
             <Link
                 component="a"
                 href="/custom/privacy_policy.pdf"
                 download="Политика конфиденциальности"
-            > пользовательского соглашения
+            >
+                пользовательского соглашения
             </Link>
         </>
     );
@@ -191,24 +216,40 @@ const FormContainer = (props) => {
                             >
                                 <Button
                                     type="submit"
-                                    color="primary"
+                                    className={classes.submitButton}
                                     disabled={submitting || invalid}
                                 >
                                     Записать
                                 </Button>
+                                <Button
+                                    onClick={handleCheck}
+                                    className={classes.submitButton}
+                                    disabled={submitting}
+                                >
+                                    Проверить
+                                </Button>
+                            </ButtonGroup>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <ButtonGroup
+                                fullWidth
+                                aria-label="full width outlined button group"
+                            >
                                 <Button
                                     color="secondary"
                                     type="button"
                                     disabled={pristine || submitting}
                                     onClick={reset}
                                 >
-                                    Очистить
+                                    Очистить форму
                                 </Button>
                                 <Button
-                                    onClick={handleCheck}
+                                    color="secondary"
+                                    type="button"
                                     disabled={submitting}
+                                    onClick={handleDelete}
                                 >
-                                    Проверить
+                                    Стереть карту
                                 </Button>
                             </ButtonGroup>
                         </Grid>
