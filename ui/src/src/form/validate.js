@@ -27,7 +27,7 @@ export default function (values) {
     }
 
     if (!values.policy) {
-        errors.policy = 'Подтвердите обработку персональных данных';
+        errors.policy = 'Подтвердите согласие с условиями';
     }
 
     return errors;

@@ -150,7 +150,7 @@ const FormContainer = (props) => {
 
     const Label = (
         <>
-            Ознакомлен с условиями&nbsp;
+            Принимаю условия&nbsp;
             <Link
                 component="a"
                 href="/custom/privacy_policy.pdf"
