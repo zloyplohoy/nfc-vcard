@@ -22,6 +22,17 @@
     state: started
     restart_policy: always
     network_mode: host
+    volumes:
+      - "/opt/nfc-vcard-ui/custom:/usr/share/nginx/html/custom"
+  tags:
+    - start
+    - never
+
+- name: Notify user of custom elements
+  debug:
+    msg:
+      - "Please copy your privacy policy to /opt/nfc-vcard-ui/custom/privacy_policy.pdf"
+      - "Please copy your favicon to /opt/nfc-vcard-ui/custom/favicon.ico"
   tags:
     - start
     - never
