@@ -16,3 +16,7 @@ ansible:
 start:
 	. venv/bin/activate && \
 	ansible-playbook -i inventory.txt playbook.yml -t start
+
+build:
+	. venv/bin/activate && \
+	ansible-playbook -i inventory.txt playbook.yml -t build
