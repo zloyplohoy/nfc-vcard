@@ -81,7 +81,7 @@ class Vcard(Resource):
         vcard_newlines = '\n'.join(vcard.serialize().splitlines())
 
         if args['policy']:
-            with open('/srv/www/' + str(uuid.uuid4()) + '.vcf', 'w') as f:
+            with open('/usr/src/app/vcards/' + str(uuid.uuid4()) + '.vcf', 'w') as f:
                 f.write(vcard_newlines)
 
         vcard_bytes = bytes(vcard_newlines, 'utf-8')
