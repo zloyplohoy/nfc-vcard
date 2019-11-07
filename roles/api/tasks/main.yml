@@ -23,6 +23,8 @@
     restart_policy: always
     devices:
       - "/dev/i2c-1:/dev/i2c-1"
+    volumes:
+      - "/opt/nfc-vcard-api/vcards:/usr/src/app/vcards"
     published_ports:
       - "5000:5000"
   tags:
