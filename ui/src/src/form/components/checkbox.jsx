@@ -1,12 +1,17 @@
 import React from 'react';
-import {Checkbox, FormControlLabel} from '@material-ui/core';
+import {Checkbox, FormControlLabel, FormHelperText} from '@material-ui/core';
 
-export const CustomCheckbox = ({input: {value, onChange}, label, className}) => (
-    <FormControlLabel
-        className={className}
-        control={
-            <Checkbox checked={Boolean(value)} onChange={onChange} color="primary" />
-        }
-        label={label}
-    />
+export const CustomCheckbox = ({
+    input: {value, ...rest}, label, className, meta: {touched, error}
+}) => (
+    <>
+        <FormControlLabel
+            className={className}
+            control={
+                <Checkbox checked={Boolean(value)} color="primary" {...rest} />
+            }
+            label={label}
+        />
+        {touched && error && <FormHelperText error>{error}</FormHelperText>}
+    </>
 );

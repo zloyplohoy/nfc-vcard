@@ -20,7 +20,7 @@ export class Root extends PureComponent {
             <Provider store={store}>
                 <MuiThemeProvider theme={theme}>
                     <Typography variant="h3" align="center" style={{color: grey[50], marginTop: '30px'}}>
-                        Создать rfid-карту
+                        Создать NFC визитку
                     </Typography>
                     <FormContainer />
                 </MuiThemeProvider>

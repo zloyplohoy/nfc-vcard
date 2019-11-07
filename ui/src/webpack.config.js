@@ -47,9 +47,8 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'registration-form',
+            title: 'Создать NFC визитку',
             hash: true,
-            favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
             template: path.resolve(__dirname, 'public', 'index.html')
         })
     ],
@@ -58,7 +57,10 @@ const config = {
         historyApiFallback: true,
         hot: true,
         port: 80,
-        open: true
+        open: true,
+        proxy: {
+            '/api/v1/vcard': 'http://localhost:3000'
+        }
     }
 };
 
