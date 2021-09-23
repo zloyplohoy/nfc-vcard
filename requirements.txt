@@ -1,8 +1,12 @@
-ansible==2.8.6
+ansible==4.2.0
+ansible-core==2.11.5
 cffi==1.13.0
 cryptography==2.8
-Jinja2==2.10.3
-MarkupSafe==1.1.1
+jinja2==2.10.3
+markupsafe==1.1.1
+packaging==21.0
 pycparser==2.19
-PyYAML==5.1.2
+pyparsing==2.4.7
+pyyaml==5.1.2
+resolvelib==0.5.4
 six==1.12.0
