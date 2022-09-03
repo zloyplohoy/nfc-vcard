@@ -27,7 +27,7 @@ install-ansible-playbook:
 
 
 # Run tests on the repository
-test: test-install
+test: test-install test-backend
 
 
 # Test the installation logic
@@ -53,3 +53,27 @@ test-install-ansible-pip:
 test-install-ansible-lint:
 	@. install/ansible/venv-test/bin/activate && \
 		ansible-lint install/ansible/install.yml
+
+
+# Test the backend
+test-backend: test-backend-python
+
+
+# Test backend Python code
+test-backend-python: test-backend-python-venv test-backend-python-pip test-backend-python-pylama
+
+
+# Create a Python virtual environment for backend tests
+test-backend-python-venv:
+	@python3 -m venv backend/venv-test
+
+
+# Install requirements for Python code tests
+test-backend-python-pip:
+	@. backend/venv-test/bin/activate && \
+		pip install --disable-pip-version-check --quiet --requirement backend/requirements-test.txt
+
+
+test-backend-python-pylama:
+	@. backend/venv-test/bin/activate && \
+		pylama backend/src
