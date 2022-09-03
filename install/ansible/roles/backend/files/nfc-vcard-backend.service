@@ -1,0 +1,8 @@
+[Unit]
+Description=NFC vCard Backend
+
+[Service]
+ExecStart=/opt/nfc-vcard-backend/venv/bin/python /opt/nfc-vcard-backend/api.py
+
+[Install]
+WantedBy=multi-user.target
