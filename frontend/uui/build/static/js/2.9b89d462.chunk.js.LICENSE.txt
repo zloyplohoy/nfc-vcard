@@ -1,0 +1,3836 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*! .. */
+
+/*! ../ */
+
+/*! ../.. */
+
+/*! ../../ */
+
+/*! ../../../../icons/burger-close.svg */
+
+/*! ../../../../icons/burger.svg */
+
+/*! ../../../../icons/menu_input_cancel.svg */
+
+/*! ../../../../icons/search-18.svg */
+
+/*! ../../../../icons/triangle.svg */
+
+/*! ../../../helpers */
+
+/*! ../../../helpers/useMemoWithDestructor */
+
+/*! ../../../i18n */
+
+/*! ../../../icons/chevron-down-24.svg */
+
+/*! ../../../icons/folding-arrow-18.svg */
+
+/*! ../../../icons/global_menu.svg */
+
+/*! ../../../icons/menu_input_cancel.svg */
+
+/*! ../../../icons/search-18.svg */
+
+/*! ../../../index */
+
+/*! ../../assets/styles/colorvars/buttons/button-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/buttons/iconButton-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/buttons/linkButton-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/buttons/tabButton-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/inputs/checkbox-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/layout/accordion-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/layout/iconContainer-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/overlays/alert-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/overlays/notificationCard-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/overlays/tooltip-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/widgets/badge-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/widgets/spinner-colorvars.scss */
+
+/*! ../../assets/styles/colorvars/widgets/tag-colorvars.scss */
+
+/*! ../../assets/styles/typography.scss */
+
+/*! ../../buttons */
+
+/*! ../../constants */
+
+/*! ../../helpers */
+
+/*! ../../helpers/batch */
+
+/*! ../../helpers/mouseCoords */
+
+/*! ../../helpers/textLayout */
+
+/*! ../../i18n */
+
+/*! ../../icons/accept-18.svg */
+
+/*! ../../icons/check-12.svg */
+
+/*! ../../icons/check-18.svg */
+
+/*! ../../icons/empty-table.svg */
+
+/*! ../../icons/fileUpload/file-file-24.svg */
+
+/*! ../../icons/fileUpload/file-file_eml-24.svg */
+
+/*! ../../icons/fileUpload/file-file_excel-24.svg */
+
+/*! ../../icons/fileUpload/file-file_image-24.svg */
+
+/*! ../../icons/fileUpload/file-file_pdf-24.svg */
+
+/*! ../../icons/fileUpload/file-file_table-24.svg */
+
+/*! ../../icons/fileUpload/file-file_text-24.svg */
+
+/*! ../../icons/fileUpload/file-file_video-24.svg */
+
+/*! ../../icons/fileUpload/file-file_word-24.svg */
+
+/*! ../../icons/fileUpload/shape.svg */
+
+/*! ../../icons/folding-arrow-18.svg */
+
+/*! ../../icons/icons */
+
+/*! ../../icons/navigation-close-24.svg */
+
+/*! ../../icons/notification-check_circle-fill-24.svg */
+
+/*! ../../icons/notification-error-fill-10.svg */
+
+/*! ../../icons/notification-error-fill-24.svg */
+
+/*! ../../icons/notification-help-fill-24.svg */
+
+/*! ../../icons/notification-warning-fill-24.svg */
+
+/*! ../../icons/partly-select-12.svg */
+
+/*! ../../icons/partly-select-18.svg */
+
+/*! ../../icons/radio-point.svg */
+
+/*! ../../icons/search-with-background.svg */
+
+/*! ../../icons/snackbar/cross.svg */
+
+/*! ../../icons/tree_folding_arrow.svg */
+
+/*! ../../index */
+
+/*! ../../inputs */
+
+/*! ../../layout */
+
+/*! ../../overlays */
+
+/*! ../../overlays/Portal */
+
+/*! ../../overlays/Tooltip.scss */
+
+/*! ../../pickers */
+
+/*! ../../querying */
+
+/*! ../../services */
+
+/*! ../../typography */
+
+/*! ../Anchor */
+
+/*! ../ArrayDataSource */
+
+/*! ../AsyncDataSource */
+
+/*! ../BaseContext */
+
+/*! ../ContextProvider */
+
+/*! ../LazyDataSource */
+
+/*! ../ListApiCache */
+
+/*! ../MainMenu */
+
+/*! ../assets/styles/text-layout.scss */
+
+/*! ../buttons */
+
+/*! ../buttons/Button.scss */
+
+/*! ../constants */
+
+/*! ../datePickers/RangeDatePicker.scss */
+
+/*! ../helpers */
+
+/*! ../hooks */
+
+/*! ../index */
+
+/*! ../inputs */
+
+/*! ../layout */
+
+/*! ../layout/FlexItems */
+
+/*! ../layout/IconContainer */
+
+/*! ../layout/flexItems/VPanel */
+
+/*! ../lenses/LensBuilder */
+
+/*! ../navigation/Anchor */
+
+/*! ../overlays */
+
+/*! ../overlays/ConfirmationModal */
+
+/*! ../services */
+
+/*! ../services/UserSettingsContext */
+
+/*! ../tables */
+
+/*! ../types */
+
+/*! ../typography */
+
+/*! ../validation */
+
+/*! ../widgets */
+
+/*! ../widgets/Svg */
+
+/*! ./ */
+
+/*! ./../../icons/folding-arrow-18.svg */
+
+/*! ./../../node_modules/process/browser.js */
+
+/*! ./Accordion */
+
+/*! ./Accordion.scss */
+
+/*! ./Alert */
+
+/*! ./Alert.scss */
+
+/*! ./AnalyticsContext */
+
+/*! ./Anchor */
+
+/*! ./Anchor.scss */
+
+/*! ./ApiContext */
+
+/*! ./ArrayDataSource */
+
+/*! ./ArrayListView */
+
+/*! ./AsyncDataSource */
+
+/*! ./Avatar */
+
+/*! ./Avatar.scss */
+
+/*! ./AvatarStack */
+
+/*! ./AvatarStack.scss */
+
+/*! ./Badge */
+
+/*! ./Badge.scss */
+
+/*! ./BaseContext */
+
+/*! ./BaseDataSource */
+
+/*! ./BaseDatePicker */
+
+/*! ./BaseListView */
+
+/*! ./BaseRangeDatePicker */
+
+/*! ./BaseRating */
+
+/*! ./BaseRating.scss */
+
+/*! ./BaseTimePicker */
+
+/*! ./Blocker */
+
+/*! ./Blocker.scss */
+
+/*! ./Burger */
+
+/*! ./Burger.scss */
+
+/*! ./BurgerButton */
+
+/*! ./BurgerButton.scss */
+
+/*! ./BurgerGroupHeader */
+
+/*! ./BurgerGroupHeader.scss */
+
+/*! ./BurgerSearch */
+
+/*! ./BurgerSearch.scss */
+
+/*! ./Button */
+
+/*! ./Button.scss */
+
+/*! ./ButtonBase */
+
+/*! ./Calendar */
+
+/*! ./Calendar.scss */
+
+/*! ./CalendarPresets */
+
+/*! ./CalendarPresets.scss */
+
+/*! ./Carousel */
+
+/*! ./Carousel.scss */
+
+/*! ./Checkbox */
+
+/*! ./Checkbox.scss */
+
+/*! ./CheckboxGroup */
+
+/*! ./CheckboxGroup.scss */
+
+/*! ./ColumnHeaderDropdown */
+
+/*! ./ColumnHeaderDropdown.scss */
+
+/*! ./ColumnPickerFilter */
+
+/*! ./ColumnsConfigurationModal */
+
+/*! ./ColumnsConfigurationModal.scss */
+
+/*! ./ColumnsConfigurationModalBase */
+
+/*! ./ContextProvider */
+
+/*! ./ControlGroup */
+
+/*! ./ControlGroup.scss */
+
+/*! ./ControlWrapper */
+
+/*! ./ControlWrapper.scss */
+
+/*! ./DataPickerBody */
+
+/*! ./DataPickerBody.scss */
+
+/*! ./DataPickerFooter */
+
+/*! ./DataPickerFooter.scss */
+
+/*! ./DataPickerHeader */
+
+/*! ./DataPickerHeader.scss */
+
+/*! ./DataPickerRow */
+
+/*! ./DataPickerRow.scss */
+
+/*! ./DataTable */
+
+/*! ./DataTable.scss */
+
+/*! ./DataTableCell */
+
+/*! ./DataTableCell.scss */
+
+/*! ./DataTableHeaderCell */
+
+/*! ./DataTableHeaderCell.scss */
+
+/*! ./DataTableHeaderRow */
+
+/*! ./DataTableHeaderRow.scss */
+
+/*! ./DataTableRow */
+
+/*! ./DataTableRow.scss */
+
+/*! ./DataTableRowContainer */
+
+/*! ./DataTableRowContainer.scss */
+
+/*! ./DatePicker */
+
+/*! ./DatePicker.scss */
+
+/*! ./DatePicker/BaseDatePicker */
+
+/*! ./DatePicker/BaseRangeDatePicker */
+
+/*! ./DatePicker/Calendar */
+
+/*! ./DatePicker/CalendarPresets */
+
+/*! ./DatePicker/DatePickerBody */
+
+/*! ./DatePicker/DatePickerBodyBase */
+
+/*! ./DatePicker/DatePickerHeader */
+
+/*! ./DatePicker/Day */
+
+/*! ./DatePicker/RangeDatePickerBody */
+
+/*! ./DatePicker/helpers */
+
+/*! ./DatePickerBody */
+
+/*! ./DatePickerBodyBase */
+
+/*! ./DatePickerHeader */
+
+/*! ./DatePickerHeader.scss */
+
+/*! ./Day */
+
+/*! ./Debouncer */
+
+/*! ./DndActor */
+
+/*! ./DndContext */
+
+/*! ./DragGhost */
+
+/*! ./DragHandle */
+
+/*! ./DragHandle.scss */
+
+/*! ./DropMarker */
+
+/*! ./DropMarker.scss */
+
+/*! ./DropSpot */
+
+/*! ./DropSpot.scss */
+
+/*! ./Dropdown */
+
+/*! ./DropdownContainer */
+
+/*! ./DropdownContainer.scss */
+
+/*! ./DropdownMenu */
+
+/*! ./DropdownMenu.scss */
+
+/*! ./ErrorCatch */
+
+/*! ./ErrorContext */
+
+/*! ./ErrorHandler */
+
+/*! ./ErrorHandler.scss */
+
+/*! ./ErrorPage */
+
+/*! ./ErrorPage.scss */
+
+/*! ./FileCard */
+
+/*! ./FileCard.scss */
+
+/*! ./FilterDataPickerBody */
+
+/*! ./FilterItemBody */
+
+/*! ./FilterPickerBody */
+
+/*! ./FilterPickerBody.scss */
+
+/*! ./FilterRangeDatePickerBody */
+
+/*! ./FilterToolbarItemToggler */
+
+/*! ./FilterToolbarItemToggler.scss */
+
+/*! ./FiltersToolbar */
+
+/*! ./FiltersToolbarItem */
+
+/*! ./FiltersToolbarItem.scss */
+
+/*! ./FlexCell */
+
+/*! ./FlexItems */
+
+/*! ./FlexRow */
+
+/*! ./FlexRow.scss */
+
+/*! ./FlexSpacer */
+
+/*! ./FlexSpacer.scss */
+
+/*! ./Form */
+
+/*! ./GAListener */
+
+/*! ./GlobalMenu */
+
+/*! ./GlobalMenu.scss */
+
+/*! ./HistoryAdaptedRouter */
+
+/*! ./IEditableDebouncer */
+
+/*! ./IconButton */
+
+/*! ./IconButton.scss */
+
+/*! ./IconContainer */
+
+/*! ./IconContainer.scss */
+
+/*! ./IndeterminateBar */
+
+/*! ./IndeterminateBar.scss */
+
+/*! ./IndicatorBar */
+
+/*! ./IndicatorBar.scss */
+
+/*! ./KeyboardUtils */
+
+/*! ./LabeledInput */
+
+/*! ./LabeledInput.scss */
+
+/*! ./LayoutContext */
+
+/*! ./LazyDataSource */
+
+/*! ./LazyListView */
+
+/*! ./LazyLoadedMap */
+
+/*! ./LazyTree */
+
+/*! ./LegacyContextProvider */
+
+/*! ./LensBuilder */
+
+/*! ./LinkButton */
+
+/*! ./LinkButton.scss */
+
+/*! ./ListApiCache */
+
+/*! ./Loaders */
+
+/*! ./LoadingListView */
+
+/*! ./LockContext */
+
+/*! ./MainMenu */
+
+/*! ./MainMenu.scss */
+
+/*! ./MainMenuAvatar */
+
+/*! ./MainMenuAvatar.scss */
+
+/*! ./MainMenuButton */
+
+/*! ./MainMenuButton.scss */
+
+/*! ./MainMenuCustomElement */
+
+/*! ./MainMenuDropdown */
+
+/*! ./MainMenuDropdown.scss */
+
+/*! ./MainMenuIcon */
+
+/*! ./MainMenuIcon.scss */
+
+/*! ./MainMenuLogo */
+
+/*! ./MainMenuLogo.scss */
+
+/*! ./MainMenuSearch */
+
+/*! ./MainMenuSearch.scss */
+
+/*! ./MobileDropdownWrapper */
+
+/*! ./MobileDropdownWrapper.scss */
+
+/*! ./ModalBlocker */
+
+/*! ./ModalBlocker.scss */
+
+/*! ./ModalContext */
+
+/*! ./ModalWindow */
+
+/*! ./Modals */
+
+/*! ./Modals.scss */
+
+/*! ./MonthSelection */
+
+/*! ./MonthSelection.scss */
+
+/*! ./MultiSwitch */
+
+/*! ./NextRouterAdapter */
+
+/*! ./NotificationCard */
+
+/*! ./NotificationCard.scss */
+
+/*! ./NotificationContext */
+
+/*! ./NumericInput */
+
+/*! ./NumericInput.scss */
+
+/*! ./PageButton */
+
+/*! ./PageButton.scss */
+
+/*! ./Paginator */
+
+/*! ./Paginator.scss */
+
+/*! ./Panel */
+
+/*! ./Panel.scss */
+
+/*! ./PickerBase */
+
+/*! ./PickerBodyBase */
+
+/*! ./PickerInput */
+
+/*! ./PickerInput.scss */
+
+/*! ./PickerInputBase */
+
+/*! ./PickerItem */
+
+/*! ./PickerItem.scss */
+
+/*! ./PickerList */
+
+/*! ./PickerListBase */
+
+/*! ./PickerListItem */
+
+/*! ./PickerListItem.scss */
+
+/*! ./PickerModal */
+
+/*! ./PickerModal.scss */
+
+/*! ./PickerModalBase */
+
+/*! ./PickerToggler */
+
+/*! ./PickerToggler.scss */
+
+/*! ./PopoverArrow */
+
+/*! ./PopoverArrow.scss */
+
+/*! ./Portal */
+
+/*! ./Preset */
+
+/*! ./PresetActionsDropdown */
+
+/*! ./PresetActionsDropdown.scss */
+
+/*! ./PresetInput */
+
+/*! ./PresetInput.scss */
+
+/*! ./PresetPanel */
+
+/*! ./ProgressBar */
+
+/*! ./ProgressBar.scss */
+
+/*! ./RadioGroup */
+
+/*! ./RadioGroup.scss */
+
+/*! ./RadioInput */
+
+/*! ./RadioInput.scss */
+
+/*! ./RangeDatePicker */
+
+/*! ./RangeDatePicker.scss */
+
+/*! ./RangeDatePickerBody */
+
+/*! ./RangeDatePickerBody.scss */
+
+/*! ./RangeSliderScale */
+
+/*! ./Rating */
+
+/*! ./Rating.scss */
+
+/*! ./Rating/BaseRating */
+
+/*! ./Rating/Rating */
+
+/*! ./RichTextView */
+
+/*! ./RichTextView.scss */
+
+/*! ./ScrollBars */
+
+/*! ./ScrollBars.scss */
+
+/*! ./ScrollManager */
+
+/*! ./ScrollSpy */
+
+/*! ./SkinContext */
+
+/*! ./Slider */
+
+/*! ./Slider.scss */
+
+/*! ./Slider/RangeSlider */
+
+/*! ./Slider/Slider */
+
+/*! ./Slider/SliderBase */
+
+/*! ./SliderBase */
+
+/*! ./SliderBase.scss */
+
+/*! ./SliderHandle */
+
+/*! ./SliderScale */
+
+/*! ./SliderScaleBase */
+
+/*! ./SliderScaleElement */
+
+/*! ./Snackbar */
+
+/*! ./Snackbar.scss */
+
+/*! ./SortingPanel */
+
+/*! ./SortingPanel.scss */
+
+/*! ./Spinner */
+
+/*! ./Spinner.scss */
+
+/*! ./Stateful */
+
+/*! ./StubAdaptedRouter */
+
+/*! ./Svg */
+
+/*! ./SvgCircleProgress */
+
+/*! ./SvgCircleProgress.scss */
+
+/*! ./Switch */
+
+/*! ./Switch.scss */
+
+/*! ./TabButton */
+
+/*! ./TabButton.scss */
+
+/*! ./Tag */
+
+/*! ./Tag.scss */
+
+/*! ./Text */
+
+/*! ./Text.scss */
+
+/*! ./TextArea */
+
+/*! ./TextArea.scss */
+
+/*! ./TextInput */
+
+/*! ./TextInput.scss */
+
+/*! ./TextPlaceholder */
+
+/*! ./TextPlaceholder.scss */
+
+/*! ./TimePicker */
+
+/*! ./TimePicker.scss */
+
+/*! ./TimePickerBody */
+
+/*! ./Tooltip */
+
+/*! ./Tooltip.scss */
+
+/*! ./Tree */
+
+/*! ./UploadFileToggler */
+
+/*! ./UploadFileToggler.scss */
+
+/*! ./VPanel */
+
+/*! ./VPanel.scss */
+
+/*! ./VerticalTabButton */
+
+/*! ./VerticalTabButton.scss */
+
+/*! ./VirtualList */
+
+/*! ./VirtualList.scss */
+
+/*! ./YearSelection */
+
+/*! ./YearSelection.scss */
+
+/*! ./accept-12.svg */
+
+/*! ./accept-18.svg */
+
+/*! ./accept-24.svg */
+
+/*! ./analytics */
+
+/*! ./applyColumnsConfig */
+
+/*! ./arrayToMatrix */
+
+/*! ./assets/styles/font-faces.scss */
+
+/*! ./assets/styles/index.scss */
+
+/*! ./batch */
+
+/*! ./bindingHelpers */
+
+/*! ./browser */
+
+/*! ./btn-cross-12.svg */
+
+/*! ./btn-cross-18.svg */
+
+/*! ./btn-cross-24.svg */
+
+/*! ./builders */
+
+/*! ./buttons */
+
+/*! ./calendar-12.svg */
+
+/*! ./calendar-18.svg */
+
+/*! ./calendar-24.svg */
+
+/*! ./closest */
+
+/*! ./components */
+
+/*! ./components/filterItemBody */
+
+/*! ./config */
+
+/*! ./constants */
+
+/*! ./contexts */
+
+/*! ./cookie */
+
+/*! ./cx */
+
+/*! ./data */
+
+/*! ./dataQuery */
+
+/*! ./datePicker */
+
+/*! ./datePickers */
+
+/*! ./dnd */
+
+/*! ./errors */
+
+/*! ./events */
+
+/*! ./fileUpload */
+
+/*! ./filters */
+
+/*! ./flexItems */
+
+/*! ./folding-arrow-12.svg */
+
+/*! ./folding-arrow-18.svg */
+
+/*! ./folding-arrow-24.svg */
+
+/*! ./formatBytes */
+
+/*! ./forms */
+
+/*! ./getDefaultColumnsConfig */
+
+/*! ./getFilterPredicate */
+
+/*! ./getOffset */
+
+/*! ./getOrderBetween */
+
+/*! ./getOrderComparer */
+
+/*! ./getSearchFilter */
+
+/*! ./help-fill-10.svg */
+
+/*! ./help-fill-16.svg */
+
+/*! ./helper */
+
+/*! ./helpers */
+
+/*! ./hooks */
+
+/*! ./i18n */
+
+/*! ./index */
+
+/*! ./info-12.svg */
+
+/*! ./info-18.svg */
+
+/*! ./info-24.svg */
+
+/*! ./inputs */
+
+/*! ./isDefaultColumnsConfig */
+
+/*! ./layout */
+
+/*! ./lenses */
+
+/*! ./lensesImpl */
+
+/*! ./mergeValidation */
+
+/*! ./mobile */
+
+/*! ./mouseCoords */
+
+/*! ./navigation */
+
+/*! ./normalizeFilter */
+
+/*! ./numericInputCalculations */
+
+/*! ./objects */
+
+/*! ./overlays */
+
+/*! ./parseIconViewbox */
+
+/*! ./parseToCSSProperties */
+
+/*! ./pickers */
+
+/*! ./processing */
+
+/*! ./props */
+
+/*! ./querying */
+
+/*! ./routing */
+
+/*! ./runDataQuery */
+
+/*! ./screenSize */
+
+/*! ./search-12.svg */
+
+/*! ./search-18.svg */
+
+/*! ./search-24.svg */
+
+/*! ./selectors */
+
+/*! ./services */
+
+/*! ./skinContext */
+
+/*! ./src */
+
+/*! ./ssr */
+
+/*! ./table */
+
+/*! ./tables */
+
+/*! ./types */
+
+/*! ./typography */
+
+/*! ./urlParser */
+
+/*! ./urlUtils */
+
+/*! ./useAppMobileHeight */
+
+/*! ./useArrayDataSource */
+
+/*! ./useAsyncDataSource */
+
+/*! ./useColumnsConfig */
+
+/*! ./useColumnsWithFilters */
+
+/*! ./useForceUpdate */
+
+/*! ./useForm */
+
+/*! ./useLazyDataSource */
+
+/*! ./useLock */
+
+/*! ./useScrollShadows */
+
+/*! ./useTableState */
+
+/*! ./useUuiError */
+
+/*! ./useUuiServices */
+
+/*! ./useVirtualList */
+
+/*! ./validate */
+
+/*! ./validateServerErrorState */
+
+/*! ./validation */
+
+/*! ./views */
+
+/*! ./views/LoadingListView */
+
+/*! ./widgets */
+
+/*! ./withMods */
+
+/*! /Users/Aliaksei_Manetau/WebstormProjects/uui/epam-promo/index.tsx */
+
+/*! /Users/Aliaksei_Manetau/WebstormProjects/uui/uui-components/index.tsx */
+
+/*! /Users/Aliaksei_Manetau/WebstormProjects/uui/uui-core/index.tsx */
+
+/*! @epam/assets/icons/common/action-add-12.svg */
+
+/*! @epam/assets/icons/common/action-copy_content-18.svg */
+
+/*! @epam/assets/icons/common/action-deleteforever-12.svg */
+
+/*! @epam/assets/icons/common/action-deleteforever-18.svg */
+
+/*! @epam/assets/icons/common/action-settings-18.svg */
+
+/*! @epam/assets/icons/common/action-update-18.svg */
+
+/*! @epam/assets/icons/common/content-edit-18.svg */
+
+/*! @epam/assets/icons/common/content-edit_undo-18.svg */
+
+/*! @epam/assets/icons/common/content-filtration-18.svg */
+
+/*! @epam/assets/icons/common/content-link-18.svg */
+
+/*! @epam/assets/icons/common/content-plus_bold-18.svg */
+
+/*! @epam/assets/icons/common/fav-rates-star-24.svg */
+
+/*! @epam/assets/icons/common/navigation-chevron-down-18.svg */
+
+/*! @epam/assets/icons/common/navigation-chevron-left-18.svg */
+
+/*! @epam/assets/icons/common/navigation-chevron-left-24.svg */
+
+/*! @epam/assets/icons/common/navigation-chevron-right-18.svg */
+
+/*! @epam/assets/icons/common/navigation-chevron-right-24.svg */
+
+/*! @epam/assets/icons/common/navigation-chevron-up-18.svg */
+
+/*! @epam/assets/icons/common/navigation-close-18.svg */
+
+/*! @epam/assets/icons/common/navigation-close-24.svg */
+
+/*! @epam/assets/icons/common/navigation-more_vert-18.svg */
+
+/*! @epam/assets/icons/common/notification-done-12.svg */
+
+/*! @epam/assets/icons/common/notification-done-18.svg */
+
+/*! @epam/assets/icons/common/notification-done-24.svg */
+
+/*! @epam/assets/icons/common/save-outline-18.svg */
+
+/*! @epam/assets/icons/common/table-sort_asc-18.svg */
+
+/*! @epam/assets/icons/common/table-sort_desc-18.svg */
+
+/*! @epam/assets/icons/common/table-swap-18.svg */
+
+/*! @epam/uui-components */
+
+/*! @epam/uui-core */
+
+/*! classnames */
+
+/*! dayjs */
+
+/*! dayjs/plugin/customParseFormat */
+
+/*! dayjs/plugin/isSameOrAfter */
+
+/*! dayjs/plugin/isSameOrBefore */
+
+/*! dayjs/plugin/isToday */
+
+/*! dayjs/plugin/isoWeek */
+
+/*! dayjs/plugin/localeData */
+
+/*! dayjs/plugin/objectSupport */
+
+/*! dayjs/plugin/updateLocale */
+
+/*! dayjs/plugin/utc */
+
+/*! decode-uri-component */
+
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __spreadArray, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet, __classPrivateFieldIn */
+
+/*! exports provided: default, ReactComponent */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! jsurl */
+
+/*! lodash.clone */
+
+/*! lodash.debounce */
+
+/*! lodash.isempty */
+
+/*! lodash.isequal */
+
+/*! lodash.maxby */
+
+/*! lodash.memoize */
+
+/*! lodash.orderby */
+
+/*! lodash.range */
+
+/*! lodash.sortby */
+
+/*! lodash.trimend */
+
+/*! no static exports found */
+
+/*! prop-types */
+
+/*! query-string */
+
+/*! react */
+
+/*! react-custom-scrollbars-2 */
+
+/*! react-dom */
+
+/*! react-focus-lock */
+
+/*! react-measure */
+
+/*! react-popper */
+
+/*! react-transition-group */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/*! split-on-first */
+
+/*! strict-uri-encode */
+
+/*! tslib */
+
+/*!*****************!*\
+    !*** ./i18n.ts ***!
+    \*****************/
+
+/*!******************!*\
+    !*** ./i18n.tsx ***!
+    \******************/
+
+/*!*******************!*\
+    !*** ./index.tsx ***!
+    \*******************/
+
+/*!**********************!*\
+    !*** ./src/Text.tsx ***!
+    \**********************/
+
+/*!**********************!*\
+    !*** ./src/index.ts ***!
+    \**********************/
+
+/*!**********************!*\
+    !*** ./types/dnd.ts ***!
+    \**********************/
+
+/*!***********************!*\
+    !*** ./data/index.ts ***!
+    \***********************/
+
+/*!***********************!*\
+    !*** ./helpers/cx.ts ***!
+    \***********************/
+
+/*!***********************!*\
+    !*** ./src/Text.scss ***!
+    \***********************/
+
+/*!************************!*\
+    !*** ./helpers/ssr.ts ***!
+    \************************/
+
+/*!************************!*\
+    !*** ./hooks/index.ts ***!
+    \************************/
+
+/*!************************!*\
+    !*** ./types/index.ts ***!
+    \************************/
+
+/*!************************!*\
+    !*** ./types/props.ts ***!
+    \************************/
+
+/*!************************!*\
+    !*** external "dayjs" ***!
+    \************************/
+
+/*!************************!*\
+    !*** external "jsurl" ***!
+    \************************/
+
+/*!************************!*\
+    !*** external "react" ***!
+    \************************/
+
+/*!*************************!*\
+    !*** ./icons/icons.tsx ***!
+    \*************************/
+
+/*!*************************!*\
+    !*** ./skinContext.tsx ***!
+    \*************************/
+
+/*!*************************!*\
+    !*** ./types/tables.ts ***!
+    \*************************/
+
+/*!*************************!*\
+    !*** multi ./index.tsx ***!
+    \*************************/
+
+/*!**************************!*\
+    !*** ./helpers/batch.ts ***!
+    \**************************/
+
+/*!**************************!*\
+    !*** ./helpers/index.ts ***!
+    \**************************/
+
+/*!**************************!*\
+    !*** ./icons/burger.svg ***!
+    \**************************/
+
+/*!**************************!*\
+    !*** ./src/dnd/index.ts ***!
+    \**************************/
+
+/*!**************************!*\
+    !*** ./types/objects.ts ***!
+    \**************************/
+
+/*!***************************!*\
+    !*** ./data/Stateful.tsx ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./helpers/cookie.ts ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./helpers/events.ts ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./helpers/mobile.ts ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./icons/info-12.svg ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./icons/info-18.svg ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./icons/info-24.svg ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./services/index.ts ***!
+    \***************************/
+
+/*!***************************!*\
+    !*** ./types/contexts.ts ***!
+    \***************************/
+
+/*!****************************!*\
+    !*** ./constants/index.ts ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./helpers/browser.ts ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./helpers/closest.ts ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./icons/check-12.svg ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./icons/check-18.svg ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./icons/triangle.svg ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./src/table/index.ts ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** ./types/dataQuery.ts ***!
+    \****************************/
+
+/*!****************************!*\
+    !*** external "react-dom" ***!
+    \****************************/
+
+/*!*****************************!*\
+    !*** ./components/index.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./components/types.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./data/forms/Form.tsx ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./helpers/urlUtils.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./helpers/withMods.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./icons/accept-12.svg ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./icons/accept-18.svg ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./icons/accept-24.svg ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./icons/search-12.svg ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./icons/search-18.svg ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./icons/search-24.svg ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./src/errors/index.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./src/inputs/index.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./src/layout/Tree.tsx ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./src/layout/index.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./src/widgets/Svg.tsx ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** ./types/validation.ts ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** external "classnames" ***!
+    \*****************************/
+
+/*!*****************************!*\
+    !*** external "prop-types" ***!
+    \*****************************/
+
+/*!******************************!*\
+    !*** ./data/forms/index.tsx ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./data/lenses/index.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./data/lenses/types.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./helpers/Debouncer.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./helpers/getOffset.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./helpers/urlParser.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./hooks/useUuiError.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./src/RichTextView.tsx ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./src/buttons/index.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./src/helpers/index.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./src/pickers/index.ts ***!
+    \******************************/
+
+/*!******************************!*\
+    !*** ./src/widgets/index.ts ***!
+    \******************************/
+
+/*!*******************************!*\
+    !*** ./data/forms/useForm.ts ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./data/forms/useLock.ts ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./helpers/screenSize.ts ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./icons/calendar-12.svg ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./icons/calendar-18.svg ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./icons/calendar-24.svg ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./icons/empty-table.svg ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./icons/global_menu.svg ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./icons/radio-point.svg ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./services/dnd/index.ts ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./src/inputs/Switch.tsx ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** ./src/overlays/index.ts ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** external "lodash.clone" ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** external "lodash.maxby" ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** external "lodash.range" ***!
+    \*******************************/
+
+/*!*******************************!*\
+    !*** external "react-popper" ***!
+    \*******************************/
+
+/*!********************************!*\
+    !*** ./constants/selectors.ts ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./data/querying/index.ts ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./helpers/formatBytes.ts ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./helpers/mouseCoords.ts ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./helpers/textLayout.tsx ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./icons/btn-cross-12.svg ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./icons/btn-cross-18.svg ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./icons/btn-cross-24.svg ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./icons/burger-close.svg ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./icons/help-fill-10.svg ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./icons/help-fill-16.svg ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./services/ApiContext.ts ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./src/buttons/Button.tsx ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./src/dnd/DragHandle.tsx ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./src/inputs/Switch.scss ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./src/layout/Blocker.tsx ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** ./src/widgets/Avatar.tsx ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** external "lodash.sortby" ***!
+    \********************************/
+
+/*!********************************!*\
+    !*** external "react-measure" ***!
+    \********************************/
+
+/*!*********************************!*\
+    !*** ./data/lenses/builders.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./hooks/useForceUpdate.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./hooks/useUuiServices.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./hooks/useVirtualList.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./services/BaseContext.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./services/LockContext.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./services/SkinContext.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./services/dnd/helpers.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/buttons/Button.scss ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/dnd/DragHandle.scss ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/inputs/Checkbox.tsx ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/inputs/TextArea.tsx ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/layout/Blocker.scss ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/navigation/index.ts ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/overlays/Modals.tsx ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/overlays/Portal.tsx ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/widgets/Avatar.scss ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** ./src/widgets/Spinner.tsx ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** external "@epam/uui-core" ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** external "lodash.isempty" ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** external "lodash.isequal" ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** external "lodash.memoize" ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** external "lodash.orderby" ***!
+    \*********************************/
+
+/*!*********************************!*\
+    !*** external "lodash.trimend" ***!
+    \*********************************/
+
+/*!**********************************!*\
+    !*** ./components/dnd/index.tsx ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./data/processing/index.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./data/processing/types.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./data/validation/index.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./helpers/LazyLoadedMap.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./helpers/arrayToMatrix.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./icons/snackbar/cross.svg ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./services/ErrorContext.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./services/ModalContext.ts ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/inputs/Checkbox.scss ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/inputs/TextArea.scss ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/inputs/TextInput.tsx ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/layout/Accordion.tsx ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/overlays/Tooltip.tsx ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/widgets/Carousel.tsx ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/widgets/DropSpot.tsx ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** ./src/widgets/Spinner.scss ***!
+    \**********************************/
+
+/*!**********************************!*\
+    !*** external "lodash.debounce" ***!
+    \**********************************/
+
+/*!***********************************!*\
+    !*** ./components/forms/Form.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./hooks/useColumnsConfig.ts ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./hooks/useScrollShadows.ts ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./icons/chevron-down-24.svg ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./services/LayoutContext.ts ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./services/ScrollManager.ts ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./services/dnd/DndActor.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./services/routing/index.ts ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/errors/ErrorCatch.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/inputs/RadioInput.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/inputs/TextInput.scss ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/layout/Accordion.scss ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/layout/RadioGroup.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/layout/ScrollBars.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/navigation/Anchor.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/overlays/Dropdown.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/overlays/Snackbar.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/overlays/Tooltip.scss ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/widgets/Carousel.scss ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./src/widgets/Paginator.tsx ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** ./types/components/index.ts ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** external "dayjs/plugin/utc" ***!
+    \***********************************/
+
+/*!***********************************!*\
+    !*** external "react-focus-lock" ***!
+    \***********************************/
+
+/*!************************************!*\
+    !*** ./components/errors/index.ts ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./components/forms/index.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./components/tables/index.ts ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./components/tables/types.ts ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./components/widgets/Tag.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./data/lenses/LensBuilder.ts ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./data/lenses/lensesImpl.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./helpers/getOrderBetween.ts ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./icons/fileUpload/shape.svg ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./icons/folding-arrow-12.svg ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./icons/folding-arrow-18.svg ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./icons/folding-arrow-24.svg ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./icons/partly-select-12.svg ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./icons/partly-select-18.svg ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./services/dnd/DragGhost.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/buttons/ButtonBase.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/buttons/IconButton.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/inputs/RadioInput.scss ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/layout/RadioGroup.scss ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/layout/ScrollBars.scss ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/layout/VirtualList.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/navigation/Anchor.scss ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/overlays/Snackbar.scss ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/pickers/PickerBase.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./src/table/DataTableRow.tsx ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./types/components/Button.ts ***!
+    \************************************/
+
+/*!************************************!*\
+    !*** ./types/components/Modals.ts ***!
+    \************************************/
+
+/*!*************************************!*\
+    !*** ./components/errors/config.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./components/filters/index.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./components/inputs/index.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./components/layout/index.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./components/pickers/index.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./components/widgets/Tag.scss ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./components/widgets/index.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./data/validation/validate.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./helpers/parseIconViewbox.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./hooks/useAppMobileHeight.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./icons/menu_input_cancel.svg ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./services/analytics/index.ts ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./services/dnd/DndContext.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./src/inputs/NumericInput.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./src/layout/ControlGroup.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./src/layout/LabeledInput.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./src/layout/VirtualList.scss ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./src/widgets/AvatarStack.tsx ***!
+    \*************************************/
+
+/*!*************************************!*\
+    !*** ./types/components/Spinner.ts ***!
+    \*************************************/
+
+/*!**************************************!*\
+    !*** ./components/buttons/helper.ts ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./components/buttons/index.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./components/forms/useForm.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./components/inputs/Rating.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./components/inputs/Switch.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./components/widgets/Badge.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./hooks/useTableState/index.ts ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./icons/tree_folding_arrow.svg ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./services/AnalyticsContext.ts ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./services/ContextProvider.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/assets/styles/index.scss ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/inputs/NumericInput.scss ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/inputs/Rating/Rating.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/inputs/Slider/Slider.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/layout/CheckboxGroup.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/layout/ControlGroup.scss ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/layout/IconContainer.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/layout/LabeledInput.scss ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/navigation/ScrollSpy.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/overlays/ModalWindow.tsx ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/widgets/AvatarStack.scss ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./src/widgets/Loaders/index.ts ***!
+    \**************************************/
+
+/*!**************************************!*\
+    !*** ./types/components/Checkbox.ts ***!
+    \**************************************/
+
+/*!***************************************!*\
+    !*** ./assets/styles/font-faces.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./assets/styles/typography.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/buttons/Button.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/dnd/DropMarker.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/inputs/Rating.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/inputs/Switch.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/layout/Blocker.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/overlays/Alert.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/overlays/index.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/widgets/Avatar.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./components/widgets/Badge.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./data/querying/runDataQuery.ts ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./helpers/IEditableDebouncer.ts ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./helpers/applyColumnsConfig.ts ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./icons/navigation-close-24.svg ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/inputs/BaseTimePicker.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/inputs/DatePicker/Day.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/inputs/Rating/Rating.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/inputs/TimePickerBody.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/layout/CheckboxGroup.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/layout/IconContainer.scss ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/layout/flexItems/index.ts ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/overlays/ModalBlocker.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/overlays/PopoverArrow.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/pickers/DataPickerRow.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/pickers/KeyboardUtils.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/pickers/PickerToggler.tsx ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./src/pickers/bindingHelpers.ts ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** ./types/components/TextInput.ts ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** external "@epam/uui-components" ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** external "dayjs/plugin/isToday" ***!
+    \***************************************/
+
+/*!***************************************!*\
+    !*** external "dayjs/plugin/isoWeek" ***!
+    \***************************************/
+
+/*!****************************************!*\
+    !*** ./assets/styles/text-layout.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/buttons/Button.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/dnd/DropMarker.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/fileUpload/index.ts ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/inputs/Checkbox.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/inputs/TextArea.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/layout/Blocker.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/navigation/index.ts ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/overlays/Alert.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/overlays/Modals.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/typography/Text.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./components/widgets/Spinner.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./data/processing/hooks/index.ts ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./data/processing/views/index.ts ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./data/processing/views/types.ts ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./src/overlays/ModalBlocker.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./src/overlays/PopoverArrow.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./src/pickers/PickerBodyBase.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./src/pickers/PickerListBase.tsx ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./src/pickers/PickerToggler.scss ***!
+    \****************************************/
+
+/*!****************************************!*\
+    !*** ./types/components/PickerBase.ts ***!
+    \****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/datePickers/index.ts ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/errors/ErrorPage.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/inputs/Checkbox.scss ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/inputs/TextArea.scss ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/inputs/TextInput.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/layout/Accordion.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/overlays/Modals.scss ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/overlays/Tooltip.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/tables/DataTable.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/typography/Text.scss ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/typography/index.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./components/widgets/Spinner.scss ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./services/UserSettingsContext.ts ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./src/layout/flexItems/VPanel.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./src/pickers/PickerInputBase.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** ./src/pickers/PickerModalBase.tsx ***!
+    \*****************************************/
+
+/*!*****************************************!*\
+    !*** external "react-transition-group" ***!
+    \*****************************************/
+
+/*!******************************************!*\
+    !*** ../node_modules/process/browser.js ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ../node_modules/tslib/tslib.es6.js ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/buttons/TabButton.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/errors/ErrorPage.scss ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/inputs/RadioInput.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/inputs/TextInput.scss ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/inputs/TimePicker.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/layout/Accordion.scss ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/layout/RadioGroup.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/layout/ScrollBars.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/navigation/Anchor.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/overlays/Dropdown.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/overlays/Tooltip.scss ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/tables/DataTable.scss ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./components/widgets/Paginator.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./data/processing/ListApiCache.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./data/querying/getSearchFilter.ts ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./helpers/parseToCSSProperties.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./helpers/useMemoWithDestructor.ts ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./hooks/useTableState/constants.ts ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./icons/search-with-background.svg ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./services/NotificationContext.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./services/analytics/GAListener.ts ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/inputs/DatePicker/helpers.ts ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/inputs/Rating/BaseRating.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/inputs/Slider/SliderBase.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/layout/flexItems/FlexRow.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/layout/flexItems/VPanel.scss ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/navigation/MainMenu/index.ts ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** ./src/table/DataTableHeaderRow.tsx ***!
+    \******************************************/
+
+/*!******************************************!*\
+    !*** external "dayjs/plugin/localeData" ***!
+    \******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/buttons/IconButton.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/buttons/LinkButton.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/buttons/TabButton.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/inputs/MultiSwitch.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/inputs/RadioInput.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/inputs/Slider/index.ts ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/inputs/TimePicker.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/layout/RadioGroup.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/layout/ScrollBars.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/layout/VirtualList.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/pickers/PickerItem.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/pickers/PickerList.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/widgets/PageButton.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./components/widgets/Paginator.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./data/processing/views/LazyTree.ts ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./data/querying/getOrderComparer.ts ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./icons/fileUpload/file-file-24.svg ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/inputs/Rating/BaseRating.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/inputs/Slider/RangeSlider.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/inputs/Slider/SliderBase.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/inputs/Slider/SliderScale.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/layout/flexItems/FlexCell.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/layout/flexItems/FlexRow.scss ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/table/DataTableHeaderCell.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./src/widgets/UploadFileToggler.tsx ***!
+    \*******************************************/
+
+/*!*******************************************!*\
+    !*** ./types/components/LabeledInput.tsx ***!
+    \*******************************************/
+
+/*!********************************************!*\
+    !*** ./components/buttons/IconButton.scss ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/buttons/LinkButton.scss ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/errors/ErrorHandler.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/fileUpload/DropSpot.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/fileUpload/FileCard.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/inputs/NumericInput.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/layout/ControlGroup.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/layout/LabeledInput.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/layout/VirtualList.scss ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/pickers/PickerInput.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/pickers/PickerItem.scss ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/pickers/PickerModal.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/tables/DataTableRow.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/widgets/AvatarStack.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/widgets/PageButton.scss ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./components/widgets/ProgressBar.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./data/processing/BaseDataSource.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./data/processing/LazyDataSource.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./data/validation/mergeValidation.ts ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./helpers/getDefaultColumnsConfig.ts ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./services/LegacyContextProvider.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./src/inputs/DatePicker/Calendar.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./src/inputs/Slider/SliderHandle.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./src/overlays/DropdownContainer.tsx ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./src/widgets/UploadFileToggler.scss ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** ./types/components/filterItemBody.ts ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** external "dayjs/plugin/updateLocale" ***!
+    \********************************************/
+
+/*!********************************************!*\
+    !*** external "react-custom-scrollbars-2" ***!
+    \********************************************/
+
+/*!*********************************************!*\
+    !*** ../node_modules/query-string/index.js ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/datePickers/Calendar.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/errors/ErrorHandler.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/fileUpload/DropSpot.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/fileUpload/FileCard.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/inputs/NumericInput.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/inputs/Slider/Slider.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/layout/CheckboxGroup.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/layout/ControlGroup.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/layout/IconContainer.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/layout/LabeledInput.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/pickers/PickerInput.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/pickers/PickerModal.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/tables/DataTableCell.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/tables/DataTableRow.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/widgets/AvatarStack.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/widgets/IndicatorBar.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./components/widgets/ProgressBar.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./data/processing/ArrayDataSource.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./data/processing/AsyncDataSource.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./data/querying/getFilterPredicate.ts ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./helpers/numericInputCalculations.ts ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./icons/notification-help-fill-24.svg ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./src/inputs/DatePicker/Calendar.scss ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./src/layout/flexItems/FlexSpacer.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./src/table/DataTableRowContainer.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** ./src/widgets/Loaders/ProgressBar.tsx ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** external "dayjs/plugin/isSameOrAfter" ***!
+    \*********************************************/
+
+/*!*********************************************!*\
+    !*** external "dayjs/plugin/objectSupport" ***!
+    \*********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/datePickers/Calendar.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/inputs/Slider/Slider.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/inputs/TimePickerBody.tsx ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/layout/CheckboxGroup.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/layout/ControlWrapper.tsx ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/layout/IconContainer.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/overlays/DropdownMenu.tsx ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/pickers/DataPickerRow.tsx ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/pickers/PickerToggler.tsx ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/tables/DataTableCell.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./components/widgets/IndicatorBar.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./hooks/useTableState/helpers/index.ts ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./hooks/useTableState/useTableState.ts ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./icons/notification-error-fill-10.svg ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./icons/notification-error-fill-24.svg ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./src/layout/flexItems/FlexSpacer.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./src/navigation/MainMenu/MainMenu.tsx ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./src/table/DataTableRowContainer.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./src/widgets/Loaders/ProgressBar.scss ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** ./types/components/datePicker/index.ts ***!
+    \**********************************************/
+
+/*!**********************************************!*\
+    !*** external "dayjs/plugin/isSameOrBefore" ***!
+    \**********************************************/
+
+/*!***********************************************!*\
+    !*** ../node_modules/split-on-first/index.js ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/datePickers/DatePicker.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/filters/FilterItemBody.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/filters/FiltersToolbar.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/layout/ControlWrapper.scss ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/layout/FlexItems/Panel.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/layout/FlexItems/index.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/overlays/DropdownMenu.scss ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/pickers/DataPickerBody.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/pickers/DataPickerRow.scss ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/pickers/PickerListItem.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./components/pickers/PickerToggler.scss ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./data/processing/views/LazyListView.ts ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./icons/fileUpload/file-file_eml-24.svg ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./icons/fileUpload/file-file_pdf-24.svg ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./src/helpers/useColumnsWithFilters.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./src/inputs/Slider/SliderScaleBase.tsx ***!
+    \***********************************************/
+
+/*!***********************************************!*\
+    !*** ./src/navigation/MainMenu/MainMenu.scss ***!
+    \***********************************************/
+
+/*!************************************************!*\
+    !*** ./components/datePickers/DatePicker.scss ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./components/layout/FlexItems/Panel.scss ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./components/pickers/DataPickerBody.scss ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./components/pickers/PickerListItem.scss ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./components/typography/RichTextView.tsx ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./data/processing/views/ArrayListView.ts ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./data/processing/views/BaseListView.tsx ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./hooks/useTableState/normalizeFilter.ts ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./icons/fileUpload/file-file_text-24.svg ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./icons/fileUpload/file-file_word-24.svg ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./icons/notification-warning-fill-24.svg ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./services/routing/NextRouterAdapter.tsx ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./services/routing/StubAdaptedRouter.tsx ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./src/inputs/Slider/RangeSliderScale.tsx ***!
+    \************************************************/
+
+/*!************************************************!*\
+    !*** ./types/components/ColumnPickerFilter.ts ***!
+    \************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/filters/FilterPickerBody.tsx ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/filters/PresetPanel/index.ts ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/layout/FlexItems/FlexRow.tsx ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/navigation/MainMenu/index.ts ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/pickers/DataPickerFooter.tsx ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/pickers/DataPickerHeader.tsx ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/typography/RichTextView.scss ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./components/widgets/IndeterminateBar.tsx ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./icons/fileUpload/file-file_excel-24.svg ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./icons/fileUpload/file-file_image-24.svg ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./icons/fileUpload/file-file_table-24.svg ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./icons/fileUpload/file-file_video-24.svg ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./src/inputs/DatePicker/YearSelection.tsx ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** ./src/navigation/MainMenu/Burger/index.ts ***!
+    \*************************************************/
+
+/*!*************************************************!*\
+    !*** external "dayjs/plugin/customParseFormat" ***!
+    \*************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/buttons/VerticalTabButton.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/filters/FilterPickerBody.scss ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/layout/FlexItems/FlexCell.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/layout/FlexItems/FlexRow.scss ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/overlays/NotificationCard.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/pickers/DataPickerFooter.scss ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/pickers/DataPickerHeader.scss ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/tables/DataTableHeaderRow.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./components/widgets/IndeterminateBar.scss ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./data/processing/views/LoadingListView.ts ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./src/inputs/DatePicker/BaseDatePicker.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./src/inputs/DatePicker/DatePickerBody.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./src/inputs/DatePicker/MonthSelection.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./src/inputs/DatePicker/YearSelection.scss ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./src/inputs/Slider/SliderScaleElement.tsx ***!
+    \**************************************************/
+
+/*!**************************************************!*\
+    !*** ./src/navigation/MainMenu/MainMenuLogo.tsx ***!
+    \**************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/buttons/VerticalTabButton.scss ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/datePickers/DatePickerBody.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/filters/FiltersToolbarItem.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/filters/PresetPanel/Preset.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/overlays/ConfirmationModal.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/overlays/DropdownContainer.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/overlays/NotificationCard.scss ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/tables/DataTableHeaderCell.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/tables/DataTableHeaderRow.scss ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./components/typography/TextPlaceholder.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./services/routing/HistoryAdaptedRouter.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./src/inputs/DatePicker/CalendarPresets.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./src/inputs/DatePicker/MonthSelection.scss ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./src/navigation/MainMenu/Burger/Burger.tsx ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./src/navigation/MainMenu/MainMenuLogo.scss ***!
+    \***************************************************/
+
+/*!***************************************************!*\
+    !*** ./types/components/datePicker/DatePicker.ts ***!
+    \***************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/datePickers/CalendarPresets.tsx ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/datePickers/RangeDatePicker.tsx ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/filters/FiltersToolbarItem.scss ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/layout/FlexItems/FlexSpacer.tsx ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/overlays/DropdownContainer.scss ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/tables/DataTableHeaderCell.scss ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./components/typography/TextPlaceholder.scss ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./data/processing/hooks/useLazyDataSource.ts ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./src/inputs/DatePicker/CalendarPresets.scss ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./src/inputs/DatePicker/DatePickerHeader.tsx ***!
+    \****************************************************/
+
+/*!****************************************************!*\
+    !*** ./src/navigation/MainMenu/Burger/Burger.scss ***!
+    \****************************************************/
+
+/*!*****************************************************!*\
+    !*** ../epam-assets/icons/common/action-add-12.svg ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ../epam-assets/icons/common/table-swap-18.svg ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ../node_modules/decode-uri-component/index.js ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./components/datePickers/CalendarPresets.scss ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./components/datePickers/RangeDatePicker.scss ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./components/fileUpload/SvgCircleProgress.tsx ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./components/filters/FilterDataPickerBody.tsx ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenu.tsx ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./data/processing/hooks/useArrayDataSource.ts ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./data/processing/hooks/useAsyncDataSource.ts ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./data/validation/validateServerErrorState.ts ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./icons/notification-check_circle-fill-24.svg ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./src/inputs/DatePicker/DatePickerHeader.scss ***!
+    \*****************************************************/
+
+/*!*****************************************************!*\
+    !*** ./src/table/ColumnsConfigurationModalBase.tsx ***!
+    \*****************************************************/
+
+/*!******************************************************!*\
+    !*** ./components/fileUpload/SvgCircleProgress.scss ***!
+    \******************************************************/
+
+/*!******************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenu.scss ***!
+    \******************************************************/
+
+/*!******************************************************!*\
+    !*** ./components/pickers/MobileDropdownWrapper.tsx ***!
+    \******************************************************/
+
+/*!******************************************************!*\
+    !*** ./src/inputs/DatePicker/DatePickerBodyBase.tsx ***!
+    \******************************************************/
+
+/*!*******************************************************!*\
+    !*** ../epam-assets/icons/common/content-edit-18.svg ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ../epam-assets/icons/common/content-link-18.svg ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ../epam-assets/icons/common/save-outline-18.svg ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ./components/navigation/MainMenu/GlobalMenu.tsx ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ./components/pickers/MobileDropdownWrapper.scss ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ./src/inputs/DatePicker/BaseRangeDatePicker.tsx ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ./src/inputs/DatePicker/RangeDatePickerBody.tsx ***!
+    \*******************************************************/
+
+/*!*******************************************************!*\
+    !*** ./types/components/datePicker/BaseDatePicker.ts ***!
+    \*******************************************************/
+
+/*!********************************************************!*\
+    !*** ../epam-assets/icons/common/action-update-18.svg ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./components/datePickers/RangeDatePickerBody.tsx ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./components/filters/PresetPanel/PresetInput.tsx ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./components/filters/PresetPanel/PresetPanel.tsx ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/index.ts ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./components/navigation/MainMenu/GlobalMenu.scss ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./src/inputs/DatePicker/RangeDatePickerBody.scss ***!
+    \********************************************************/
+
+/*!********************************************************!*\
+    !*** ./types/components/datePicker/RangeDatePicker.ts ***!
+    \********************************************************/
+
+/*!*********************************************************!*\
+    !*** ../epam-assets/icons/common/fav-rates-star-24.svg ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ../epam-assets/icons/common/table-sort_asc-18.svg ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ./components/datePickers/RangeDatePickerBody.scss ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ./components/filters/FilterToolbarItemToggler.tsx ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ./components/filters/PresetPanel/PresetInput.scss ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuIcon.tsx ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ./components/tables/ColumnHeaderDropdown/index.ts ***!
+    \*********************************************************/
+
+/*!*********************************************************!*\
+    !*** ./components/tables/ColumnsConfigurationModal.tsx ***!
+    \*********************************************************/
+
+/*!**********************************************************!*\
+    !*** ../epam-assets/icons/common/action-settings-18.svg ***!
+    \**********************************************************/
+
+/*!**********************************************************!*\
+    !*** ../epam-assets/icons/common/table-sort_desc-18.svg ***!
+    \**********************************************************/
+
+/*!**********************************************************!*\
+    !*** ./components/filters/FilterRangeDatePickerBody.tsx ***!
+    \**********************************************************/
+
+/*!**********************************************************!*\
+    !*** ./components/filters/FilterToolbarItemToggler.scss ***!
+    \**********************************************************/
+
+/*!**********************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/Burger.tsx ***!
+    \**********************************************************/
+
+/*!**********************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuIcon.scss ***!
+    \**********************************************************/
+
+/*!**********************************************************!*\
+    !*** ./components/tables/ColumnsConfigurationModal.scss ***!
+    \**********************************************************/
+
+/*!***********************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-close-18.svg ***!
+    \***********************************************************/
+
+/*!***********************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-close-24.svg ***!
+    \***********************************************************/
+
+/*!***********************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/Burger.scss ***!
+    \***********************************************************/
+
+/*!***********************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuAvatar.tsx ***!
+    \***********************************************************/
+
+/*!***********************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuButton.tsx ***!
+    \***********************************************************/
+
+/*!***********************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuSearch.tsx ***!
+    \***********************************************************/
+
+/*!***********************************************************!*\
+    !*** ./src/navigation/MainMenu/MainMenuCustomElement.tsx ***!
+    \***********************************************************/
+
+/*!************************************************************!*\
+    !*** ../epam-assets/icons/common/content-edit_undo-18.svg ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ../epam-assets/icons/common/content-plus_bold-18.svg ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ../epam-assets/icons/common/notification-done-12.svg ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ../epam-assets/icons/common/notification-done-18.svg ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ../epam-assets/icons/common/notification-done-24.svg ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ./assets/styles/colorvars/widgets/tag-colorvars.scss ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuAvatar.scss ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuButton.scss ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuSearch.scss ***!
+    \************************************************************/
+
+/*!************************************************************!*\
+    !*** ./types/components/datePicker/BaseRangeDatePicker.ts ***!
+    \************************************************************/
+
+/*!*************************************************************!*\
+    !*** ../epam-assets/icons/common/content-filtration-18.svg ***!
+    \*************************************************************/
+
+/*!*************************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuDropdown.tsx ***!
+    \*************************************************************/
+
+/*!**************************************************************!*\
+    !*** ../epam-assets/icons/common/action-copy_content-18.svg ***!
+    \**************************************************************/
+
+/*!**************************************************************!*\
+    !*** ./assets/styles/colorvars/widgets/badge-colorvars.scss ***!
+    \**************************************************************/
+
+/*!**************************************************************!*\
+    !*** ./components/navigation/MainMenu/MainMenuDropdown.scss ***!
+    \**************************************************************/
+
+/*!***************************************************************!*\
+    !*** ../epam-assets/icons/common/action-deleteforever-12.svg ***!
+    \***************************************************************/
+
+/*!***************************************************************!*\
+    !*** ../epam-assets/icons/common/action-deleteforever-18.svg ***!
+    \***************************************************************/
+
+/*!***************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-more_vert-18.svg ***!
+    \***************************************************************/
+
+/*!***************************************************************!*\
+    !*** ./assets/styles/colorvars/buttons/button-colorvars.scss ***!
+    \***************************************************************/
+
+/*!***************************************************************!*\
+    !*** ./assets/styles/colorvars/overlays/alert-colorvars.scss ***!
+    \***************************************************************/
+
+/*!***************************************************************!*\
+    !*** ./hooks/useTableState/helpers/isDefaultColumnsConfig.ts ***!
+    \***************************************************************/
+
+/*!****************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-chevron-up-18.svg ***!
+    \****************************************************************/
+
+/*!****************************************************************!*\
+    !*** ./assets/styles/colorvars/inputs/checkbox-colorvars.scss ***!
+    \****************************************************************/
+
+/*!****************************************************************!*\
+    !*** ./assets/styles/colorvars/widgets/spinner-colorvars.scss ***!
+    \****************************************************************/
+
+/*!****************************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/BurgerButton.tsx ***!
+    \****************************************************************/
+
+/*!****************************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/BurgerSearch.tsx ***!
+    \****************************************************************/
+
+/*!*****************************************************************!*\
+    !*** ./assets/styles/colorvars/layout/accordion-colorvars.scss ***!
+    \*****************************************************************/
+
+/*!*****************************************************************!*\
+    !*** ./assets/styles/colorvars/overlays/tooltip-colorvars.scss ***!
+    \*****************************************************************/
+
+/*!*****************************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/BurgerButton.scss ***!
+    \*****************************************************************/
+
+/*!*****************************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/BurgerSearch.scss ***!
+    \*****************************************************************/
+
+/*!*****************************************************************!*\
+    !*** ./components/tables/ColumnHeaderDropdown/SortingPanel.tsx ***!
+    \*****************************************************************/
+
+/*!******************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-chevron-down-18.svg ***!
+    \******************************************************************/
+
+/*!******************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-chevron-left-18.svg ***!
+    \******************************************************************/
+
+/*!******************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-chevron-left-24.svg ***!
+    \******************************************************************/
+
+/*!******************************************************************!*\
+    !*** ./assets/styles/colorvars/buttons/tabButton-colorvars.scss ***!
+    \******************************************************************/
+
+/*!******************************************************************!*\
+    !*** ./components/filters/PresetPanel/PresetActionsDropdown.tsx ***!
+    \******************************************************************/
+
+/*!******************************************************************!*\
+    !*** ./components/tables/ColumnHeaderDropdown/SortingPanel.scss ***!
+    \******************************************************************/
+
+/*!*******************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-chevron-right-18.svg ***!
+    \*******************************************************************/
+
+/*!*******************************************************************!*\
+    !*** ../epam-assets/icons/common/navigation-chevron-right-24.svg ***!
+    \*******************************************************************/
+
+/*!*******************************************************************!*\
+    !*** ./assets/styles/colorvars/buttons/iconButton-colorvars.scss ***!
+    \*******************************************************************/
+
+/*!*******************************************************************!*\
+    !*** ./assets/styles/colorvars/buttons/linkButton-colorvars.scss ***!
+    \*******************************************************************/
+
+/*!*******************************************************************!*\
+    !*** ./components/filters/PresetPanel/PresetActionsDropdown.scss ***!
+    \*******************************************************************/
+
+/*!*********************************************************************!*\
+    !*** ./assets/styles/colorvars/layout/iconContainer-colorvars.scss ***!
+    \*********************************************************************/
+
+/*!*********************************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/BurgerGroupHeader.tsx ***!
+    \*********************************************************************/
+
+/*!**********************************************************************!*\
+    !*** ./components/navigation/MainMenu/Burger/BurgerGroupHeader.scss ***!
+    \**********************************************************************/
+
+/*!*************************************************************************!*\
+    !*** ./components/tables/ColumnHeaderDropdown/ColumnHeaderDropdown.tsx ***!
+    \*************************************************************************/
+
+/*!**************************************************************************!*\
+    !*** ./assets/styles/colorvars/overlays/notificationCard-colorvars.scss ***!
+    \**************************************************************************/
+
+/*!**************************************************************************!*\
+    !*** ./components/tables/ColumnHeaderDropdown/ColumnHeaderDropdown.scss ***!
+    \**************************************************************************/
+
+/*!****************************************************************************!*\
+    !*** ../node_modules/query-string/node_modules/strict-uri-encode/index.js ***!
+    \****************************************************************************/
+
+/** @license React v0.20.2
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */

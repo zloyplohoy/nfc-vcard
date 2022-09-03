@@ -1,0 +1,23 @@
+@use '~@epam/promo/assets/styles/index' as *;
+
+.uuiTitle {
+    margin-top: 80px;
+    font-size: 120px;
+    line-height: 120px;
+    color: white;
+    font-family: 'Sans Semibold', Arial, sans-serif;
+}
+
+h2.title {
+    margin: 0;
+}
+
+.mainPanel {
+    padding: 24px 30px;
+    margin: 0 auto 60px;
+    max-width: 650px;
+    position: relative;
+
+}
+
+
