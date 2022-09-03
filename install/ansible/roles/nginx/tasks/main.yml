@@ -1,0 +1,33 @@
+---
+- name: Nginx is installed
+  become: true
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Default Nginx configuration is disabled
+  become: true
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify:
+    - Reload Nginx configuration
+
+- name: NFC vCard Nginx configuration is present
+  become: true
+  ansible.builtin.copy:
+    src: nfc-vcard.conf
+    dest: /etc/nginx/sites-available/
+    mode: preserve
+  notify:
+    - Reload Nginx configuration
+
+- name: NFC vCard Nginx configuration is enabled
+  become: true
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/nfc-vcard.conf
+    dest: /etc/nginx/sites-enabled/nfc-vcard.conf
+    state: link
+  notify:
+    - Reload Nginx configuration
+...
