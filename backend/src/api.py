@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
-from ntag_writer import NTAGWriter, NTAGWriterError
+from classes import NFCDevice, NTAG216
 import vobject
 import ndef
 import uuid
@@ -11,14 +11,13 @@ api = Api(app)
 
 class Vcard(Resource):
     def get(self):
-        device = NTAGWriter()
+        device = NFCDevice()
         try:
             if device.card_in_range:
                 return 'Card ready', 200
-        except NTAGWriterError as e:
+        except Exception as e:
             return e, 500
         return 'Card not found', 404
-
 
     def post(self):
         parser = reqparse.RequestParser()
@@ -37,7 +36,7 @@ class Vcard(Resource):
 
         vcard = vobject.vCard()
 
-        if args['first_name'] and args ['last_name']:
+        if args['first_name'] and args['last_name']:
             vcard.add('n')
             vcard.add('fn')
             vcard.n.value = vobject.vcard.Name(family=args['last_name'], given=args['first_name'])
@@ -55,7 +54,7 @@ class Vcard(Resource):
 
         if args['phone_number']:
             vcard.add('tel')
-            #vcard.tel.value = ''.join(['+7', args['phone_number']])
+            # vcard.tel.value = ''.join(['+7', args['phone_number']])
             vcard.tel.value = args['phone_number']
             if args['phone_personal']:
                 vcard.tel.type_param = 'CELL'
@@ -78,30 +77,31 @@ class Vcard(Resource):
             vcard.add('title')
             vcard.title.value = args['position']
 
-        vcard_newlines = '\n'.join(vcard.serialize().splitlines())
+        vcard_text = vcard.serialize()
 
         if args['policy']:
             with open('/usr/src/app/vcards/' + str(uuid.uuid4()) + '.vcf', 'w') as f:
-                f.write(vcard_newlines)
+                f.write(vcard_text)
 
-        vcard_bytes = bytes(vcard_newlines, 'utf-8')
+        vcard_bytes = bytes(vcard_text, 'utf-8')
         ndf_record = ndef.Record(type='text/vcard', name='', data=vcard_bytes)
-        ndef_data = b''.join(ndef.message_encoder([ndf_record]))
+        ndef_message = b''.join(ndef.message_encoder([ndf_record]))
 
+        ntag = NTAG216.from_ndef_message(ndef_message)
 
-        device = NTAGWriter()
+        device = NFCDevice()
 
         try:
-            device.write_ndef_message(ndef_data)
-        except NTAGWriterError as e:
+            device.write_ntag(ntag)
+        except Exception as e:
             return e, 500
         return 'Written', 201
 
     def delete(self):
-        device = NTAGWriter()
+        device = NFCDevice()
         try:
-            device.format_ntag()
-        except NTAGWriterError as e:
+            device.erase_ntag()
+        except Exception as e:
             return e, 500
         return 'Formatted', 200
 
