@@ -1,0 +1,45 @@
+@use '~@epam/promo/assets/styles/index' as *;
+
+.root {
+  margin: 0 auto 60px;
+  width: 650px;
+}
+
+.form-panel {
+  max-width: 650px;
+  padding: 24px;
+}
+
+.sectionTitle {
+  margin-top: 0;
+}
+
+.info-icon {
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  margin-top: 18px;
+}
+
+.clear-button-wrapper {
+  margin-top: 6px;
+  margin-left: -3px;
+}
+
+.attachment-container {
+  display: grid;
+  margin-top: 12px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.divider {
+  height: 1px;
+  background-color: $gray40;
+  margin-top: 18px;
+  margin-bottom: 24px;
+  border: none;
+}
+

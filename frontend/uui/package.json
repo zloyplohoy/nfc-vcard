@@ -1,0 +1,51 @@
+{
+  "name": "src-new",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@epam/assets": "^4.8.3",
+    "@epam/promo": "^4.8.3",
+    "@epam/uui-components": "^4.8.3",
+    "@epam/uui-core": "^4.8.3",
+    "axios": "^0.27.2",
+    "history": "^4.10.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "sass": "^1.54.8",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^12.1.5",
+    "@types/history": "^4.7.9",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.5",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3"
+  }
+}
