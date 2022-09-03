@@ -2,7 +2,7 @@
 - name: Backend files are present in /opt
   become: true
   ansible.builtin.copy:
-    src: "{{ lookup('env', 'PWD') }}/backend/"
+    src: "{{ lookup('env', 'PWD') }}/backend/src/"
     dest: /opt/nfc-vcard-backend/
     mode: preserve
   notify:
