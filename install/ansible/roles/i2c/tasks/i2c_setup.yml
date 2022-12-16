@@ -6,7 +6,7 @@
     regexp: '^#dtparam=i2c_arm=.*'
     line: dtparam=i2c_arm=on
 
-- name: Ensure the I2C kernel module is configured to be loaded
+- name: Ensure the I2C kernel module is configured to be loaded at boot time
   become: true
   ansible.builtin.lineinfile:
     path: /etc/modules

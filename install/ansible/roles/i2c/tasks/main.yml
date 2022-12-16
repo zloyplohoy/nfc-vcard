@@ -4,7 +4,7 @@
     path: "/dev/i2c-1"
   register: i2c_device_stat_result
 
-- name: Run I2C interface installation
-  import_tasks: i2c_install.yml
+- name: Run I2C interface setup
+  import_tasks: i2c_setup.yml
   when: not i2c_device_stat_result.stat.exists
 ...
