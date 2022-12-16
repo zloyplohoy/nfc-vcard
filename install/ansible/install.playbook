@@ -4,6 +4,6 @@
   roles:
     - i2c
     - backend
-    # - nginx
-    # - frontend
+    - nginx
+    - frontend
 ...
