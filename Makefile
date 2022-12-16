@@ -1,5 +1,12 @@
 # Install the application
-install: install-ansible
+install: install-apt-packages install-ansible
+
+
+# Install the required system packages with apt
+install-apt-packages:
+        @echo "Installing system packages..."
+        @sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 update
+        @sudo apt-get install --quiet=2 python3-dev python3-venv
 
 
 # Install the application using Ansible installation logic
