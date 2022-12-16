@@ -4,11 +4,7 @@ from abc import ABC, abstractmethod
 class BaseNTAG(ABC):
 
     @abstractmethod
-    def SIZE_BYTES():
-        pass
-
-    @abstractmethod
-    def MAX_MESSAGE_SIZE_BYTES():
+    def NTAG_SIZE_BYTES():
         pass
 
     TLV_TAG_BLOCK = b'\x03'
@@ -20,13 +16,14 @@ class BaseNTAG(ABC):
     @classmethod
     def from_ndef_message(cls, message):
         ntag_data = cls.wrap_in_tlv(message)
-        cls.check_ntag_data_size(ntag_data)
+        cls.justify_to_ntag_size(ntag_data)
         return ntag_data
 
     @classmethod
-    def check_ntag_data_size(cls, ntag_data):
-        if len(ntag_data) > cls.SIZE_BYTES:
+    def justify_to_ntag_size(cls, ntag_data):
+        if len(ntag_data) > cls.NTAG_SIZE_BYTES:
             raise ValueError(f'Message too large for {cls.__name__}')
+        return ntag_data.ljust(cls.NTAG_SIZE_BYTES, bytes(1))
 
     @classmethod
     def wrap_in_tlv(cls, message):
