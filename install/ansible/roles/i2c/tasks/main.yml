@@ -1,19 +1,10 @@
 ---
-- name: Ensure the I2C interface is enabled in the configuration
-  become: true
-  ansible.builtin.lineinfile:
-    path: "/boot/config.txt"
-    line: "dtparam=i2c_arm=on"
-    insertafter: "^#dtparam=i2c_arm=on$"
-
-- name: Ensure the I2C interface is present
+- name: Evaluate presence of the I2C interface
   ansible.builtin.stat:
     path: "/dev/i2c-1"
   register: i2c_device_stat_result
 
-- name: User notification - restart required
-  ansible.builtin.debug:
-    msg: "System restart is required to enable I2C."
+- name: Run I2C interface installation
+  import_tasks: i2c_install.yml
   when: not i2c_device_stat_result.stat.exists
-  failed_when: true
 ...
