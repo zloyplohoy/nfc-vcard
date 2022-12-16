@@ -33,7 +33,7 @@ class NFCDevice(metaclass=SingletonMeta):
 
     def erase_ntag(self):
         # TODO: This is currently broken and needs to be rewritten
-        self.write_ntag(NTAG216.from_ndef_message(None))
+        self.write_ntag(NTAG216.from_ndef_message(bytes(0)))
 
     @device_lock
     def write_ntag(self, ntag):
