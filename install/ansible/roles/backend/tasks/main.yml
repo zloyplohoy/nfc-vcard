@@ -13,7 +13,7 @@
   ansible.builtin.pip:
     virtualenv: /opt/nfc-vcard-backend/venv
     virtualenv_command: /usr/bin/python3 -m venv
-    name: wheels
+    name: wheel
 
 - name: Ensure the backend vurtual environment is populated
   become: true
