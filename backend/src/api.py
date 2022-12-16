@@ -79,10 +79,6 @@ class Vcard(Resource):
 
         vcard_text = vcard.serialize()
 
-        if args['policy']:
-            with open('/usr/src/app/vcards/' + str(uuid.uuid4()) + '.vcf', 'w') as f:
-                f.write(vcard_text)
-
         vcard_bytes = bytes(vcard_text, 'utf-8')
         ndf_record = ndef.Record(type='text/vcard', name='', data=vcard_bytes)
         ndef_message = b''.join(ndef.message_encoder([ndf_record]))

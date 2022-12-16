@@ -2,6 +2,7 @@ import board
 import busio
 from adafruit_pn532.i2c import PN532_I2C
 from threading import Lock
+from ntag import NTAG216
 
 
 class SingletonMeta(type):
@@ -31,6 +32,7 @@ class NFCDevice(metaclass=SingletonMeta):
         return True if self.device.read_passive_target() else False
 
     def erase_ntag(self):
+        # TODO: This is currently broken and needs to be rewritten
         self.write_ntag(NTAG216.from_ndef_message(None))
 
     @device_lock
@@ -40,44 +42,3 @@ class NFCDevice(metaclass=SingletonMeta):
         for page_number, data in enumerate(four_byte_data_pages, 4):
             if not self.device.ntag2xx_write_block(page_number, data):
                 raise RuntimeError('Write failed')
-
-
-class TLV:
-    NDEF_MESSAGE_TAG = b'\x03'
-    TERMINATOR_TAG = b'\xfe'
-
-    @classmethod
-    def wrap_ndef_message(cls, ndef_message):
-        if not ndef_message:
-            return cls._generate_empty_tlv()
-        if len(ndef_message) < 65_535:
-            return cls._generate_tlv(ndef_message)
-        raise ValueError('Message too long for NTAG TLV block')
-
-    @classmethod
-    def _generate_empty_tlv(cls):
-        return cls.NDEF_MESSAGE_TAG + bytes(1) + cls.TERMINATOR_TAG
-
-    @classmethod
-    def _generate_tlv(cls, data):
-        length_field = cls._generate_length_field(data)
-        return cls.NDEF_MESSAGE_TAG + length_field + data + cls.TERMINATOR_TAG
-
-    @staticmethod
-    def _generate_length_field(data):
-        DOUBLE_LENGTH_PREFIX = b'\xff'
-        if len(data) < 255:
-            return len(data).to_bytes(1, byteorder='big')
-        else:
-            return DOUBLE_LENGTH_PREFIX + len(data).to_bytes(2, byteorder='big')
-
-
-class NTAG216:
-    MAX_NDEF_MESSAGE_BYTES = 883
-    MAX_NTAG_USER_DATA_BYTES = 888
-
-    @classmethod
-    def from_ndef_message(cls, ndef_message):
-        if ndef_message and len(ndef_message) > cls.MAX_NDEF_MESSAGE_BYTES:
-            raise ValueError('NDEF message exceeds NTAG size')
-        return TLV.wrap_ndef_message(ndef_message).ljust(cls.MAX_NTAG_USER_DATA_BYTES, bytes(1))
