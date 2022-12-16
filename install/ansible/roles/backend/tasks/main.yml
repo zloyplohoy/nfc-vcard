@@ -1,5 +1,5 @@
 ---
-- name: Backend files are present in /opt
+- name: Ensure backend files are present in /opt
   become: true
   ansible.builtin.copy:
     src: "{{ lookup('env', 'PWD') }}/backend/"
@@ -8,18 +8,23 @@
   notify:
     - Restart backend service
 
-- name: Backend vurtual environment is populated
+- name: Ensure wheels is installed in the backend vurtual environment
+  become: true
+  ansible.builtin.pip:
+    virtualenv: /opt/nfc-vcard-backend/venv
+    virtualenv_command: /usr/bin/python3 -m venv
+    name: wheels
+
+- name: Ensure the backend vurtual environment is populated
   become: true
   ansible.builtin.pip:
     virtualenv: /opt/nfc-vcard-backend/venv
     virtualenv_command: /usr/bin/python3 -m venv
     requirements: /opt/nfc-vcard-backend/requirements.txt
-  environment:
-    CFLAGS: "-fcommon"
   notify:
     - Restart backend service
 
-- name: Backend Systemd unit is present
+- name: Ensure the backend Systemd unit is present
   become: true
   ansible.builtin.copy:
     src: nfc-vcard-backend.service
@@ -28,7 +33,7 @@
   notify:
     - Restart backend service
 
-- name: Backend service is running
+- name: Ensure the backend service is running
   become: true
   ansible.builtin.systemd:
     name: nfc-vcard-backend
