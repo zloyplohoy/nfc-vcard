@@ -1,4 +1,4 @@
-adafruit-circuitpython-pn532==2.3.13
+adafruit-circuitpython-pn532==2.3.14
 Flask-RESTful==0.3.9
 ndeflib==0.3.3
 vobject==0.9.6.1

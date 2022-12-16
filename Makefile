@@ -3,10 +3,11 @@ install: install-apt-packages install-ansible
 
 
 # Install the required system packages with apt
+# TODO: Suppress apt-get update output
 install-apt-packages:
-        @echo "Installing system packages..."
-        @sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 update
-        @sudo apt-get install --quiet=2 python3-dev python3-venv
+	@echo "Installing system packages..."
+	@sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 update
+	@sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 install python3-venv
 
 
 # Install the application using Ansible installation logic
@@ -30,7 +31,7 @@ install-ansible-pip:
 install-ansible-playbook:
 	@echo "Running installation playbook..."
 	@. install/ansible/venv/bin/activate; \
-		ansible-playbook --connection local --inventory localhost, install/ansible/install.yml
+		ansible-playbook --connection local --inventory localhost, install/ansible/install.playbook
 
 
 # Run tests on the repository
@@ -59,7 +60,7 @@ test-install-ansible-pip:
 # Run Ansible Lint over Ansible installation logic
 test-install-ansible-lint:
 	@. install/ansible/venv-test/bin/activate && \
-		ansible-lint install/ansible/install.yml
+		ansible-lint install/ansible/install.playbook
 
 
 # Test the backend

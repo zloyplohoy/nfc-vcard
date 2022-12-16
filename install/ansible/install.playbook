@@ -1,4 +1,5 @@
 ---
+# TODO: Update all task names
 - name: "Install NFC vCard software bundle"
   hosts: all
   roles:
