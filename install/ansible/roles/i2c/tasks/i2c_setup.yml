@@ -11,12 +11,14 @@
   ansible.builtin.lineinfile:
     path: /etc/modules
     create: true
+    mode: 0644
     line: i2c-dev
 
 - name: Set device tree parameters for I2C
   become: true
   ansible.builtin.command:
     cmd: /usr/bin/dtparam i2c_arm=on
+  changed_when: always
 
 - name: Load the I2C kernel module
   become: true

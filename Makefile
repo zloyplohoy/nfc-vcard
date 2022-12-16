@@ -59,7 +59,7 @@ test-install-ansible-pip:
 # Run Ansible Lint over Ansible installation logic
 test-install-ansible-lint:
 	@. install/ansible/venv-test/bin/activate && \
-		ansible-lint install/ansible/install.yml
+		ansible-lint install/ansible/install.playbook
 
 
 # Test the backend
