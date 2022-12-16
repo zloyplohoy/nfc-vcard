@@ -6,7 +6,7 @@ install: install-apt-packages install-ansible
 install-apt-packages:
 	@echo "Installing system packages..."
 	@sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 update
-	@sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 install python3-dev python3-venv
+	@sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 install python3-venv
 
 
 # Install the application using Ansible installation logic
