@@ -30,7 +30,7 @@ install-ansible-pip:
 install-ansible-playbook:
 	@echo "Running installation playbook..."
 	@. install/ansible/venv/bin/activate; \
-		ansible-playbook --connection local --inventory localhost, install/ansible/install.yml
+		ansible-playbook --connection local --inventory localhost, install/ansible/install.playbook
 
 
 # Run tests on the repository
