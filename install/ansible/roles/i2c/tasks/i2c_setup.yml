@@ -18,7 +18,7 @@
   become: true
   ansible.builtin.command:
     cmd: /usr/bin/dtparam i2c_arm=on
-  changed_when: always
+  changed_when: true
 
 - name: Load the I2C kernel module
   become: true
