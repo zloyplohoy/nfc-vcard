@@ -15,8 +15,8 @@ class BaseNTAG(ABC):
 
     @classmethod
     def from_ndef_message(cls, message):
-        ntag_data = cls.wrap_in_tlv(message)
-        cls.justify_to_ntag_size(ntag_data)
+        tvl_wrapped_message = cls.wrap_in_tlv(message)
+        ntag_data = cls.justify_to_ntag_size(tvl_wrapped_message)
         return ntag_data
 
     @classmethod
