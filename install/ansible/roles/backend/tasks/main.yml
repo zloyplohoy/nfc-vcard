@@ -2,7 +2,7 @@
 - name: Backend files are present in /opt
   become: true
   ansible.builtin.copy:
-    src: "{{ lookup('env', 'PWD') }}/backend/src/"
+    src: "{{ lookup('env', 'PWD') }}/backend/"
     dest: /opt/nfc-vcard-backend/
     mode: preserve
   notify:
@@ -35,10 +35,4 @@
     state: started
     enabled: true
     daemon_reload: true
-
-- name: Desktop link to the vCards directory exists
-  ansible.builtin.file:
-    src: "/opt/nfc-vcard-backend/saved-vcards"
-    dest: "/home/pi/Desktop/saved-vcards"
-    state: link
 ...
