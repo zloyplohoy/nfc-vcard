@@ -3,6 +3,7 @@ install: install-apt-packages install-ansible
 
 
 # Install the required system packages with apt
+# TODO: Suppress apt-get update output
 install-apt-packages:
 	@echo "Installing system packages..."
 	@sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet=2 update
