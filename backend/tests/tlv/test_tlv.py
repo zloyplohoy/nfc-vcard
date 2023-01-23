@@ -18,7 +18,7 @@ def test_tlv_wrap_empty_ndef_data():
 @given(binary(max_size=255))
 def test_tlv_wrap_random_single_length_data(data):
     wrapped_data = TLV.wrap(data=data)
-    length_field = len(data).to_bytes()
+    length_field = len(data).to_bytes(length=1, byteorder='big')
     assert wrapped_data == b''.join([NDEF_TAG, length_field, data, TERMINATOR])
 
 
