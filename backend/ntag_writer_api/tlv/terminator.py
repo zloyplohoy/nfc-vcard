@@ -1,1 +1,0 @@
-TERMINATOR = b'\xfe'
