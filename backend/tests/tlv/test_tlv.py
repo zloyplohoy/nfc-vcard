@@ -1,7 +1,7 @@
 import pytest
-from ntag_writer_api.ndef_tlv import TLV
-from hypothesis.strategies import binary
 from hypothesis import given
+from hypothesis.strategies import binary
+from ntag_writer_api.ndef_tlv import TLV
 
 
 NDEF_TAG = b'\x03'
