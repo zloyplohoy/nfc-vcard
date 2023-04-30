@@ -1,7 +1,7 @@
 import pytest
 from hypothesis import given
 from hypothesis.strategies import binary
-from ntag_writer_api.ndef_tlv import TLV
+from nfc_device_web_api.ntag import TLV
 
 
 NDEF_TAG = b'\x03'

@@ -13,7 +13,7 @@ class TLV:
         elif cls._length_fits_in_two_bytes(data):
             length_field = cls._get_double_byte_length_field(data)
         else:
-            raise ValueError('Data too large to fit in a TLV')
+            raise ValueError('Data too large to fit into a TLV container')
         return length_field
 
     @staticmethod
